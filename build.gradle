@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'net.mikoto.pixiv'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        myPublication(MavenPublication) {
+            from components.java
+            pom {
+                name = "pixiv-api"
+                description = "Mikoto pixiv api"
+                url = "https://www.mikoto.net.cn"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "mikoto"
+                        name = "Zhang keshun"
+                        email = "mikoto@ungine.cn"
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+dependencies {
+    implementation 'com.alibaba:fastjson:1.2.79'
+    implementation 'org.jetbrains:annotations:20.1.0'
+}
