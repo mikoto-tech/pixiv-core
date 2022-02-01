@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'net.mikoto.pixiv'
-version '1.0.0'
+version '1.1.0'
 
 repositories {
     mavenCentral()
@@ -39,5 +39,5 @@ publishing {
 
 dependencies {
     implementation 'com.alibaba:fastjson:1.2.79'
-    implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'org.jetbrains:annotations:22.0.0'
 }
