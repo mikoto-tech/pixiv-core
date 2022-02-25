@@ -36,31 +36,30 @@ public class PixivData {
      * @return Pixiv data
      */
     public PixivData loadJson(@NotNull JSONObject jsonObject) {
-        JSONObject jsonObjectBody = jsonObject.getJSONObject("body");
-        this.artworkId = jsonObjectBody.getInteger("artworkId");
-        this.artworkTitle = jsonObjectBody.getString("artworkTitle");
-        this.authorId = jsonObjectBody.getInteger("authorId");
-        this.authorName = jsonObjectBody.getString("authorName");
-        this.description = jsonObjectBody.getString("description");
+        this.artworkId = jsonObject.getInteger("artworkId");
+        this.artworkTitle = jsonObject.getString("artworkTitle");
+        this.authorId = jsonObject.getInteger("authorId");
+        this.authorName = jsonObject.getString("authorName");
+        this.description = jsonObject.getString("description");
         Map<String, String> urls = new HashMap<>(5);
-        urls.put("small", jsonObjectBody.getJSONObject("illustUrls").getString("small"));
-        urls.put("original", jsonObjectBody.getJSONObject("illustUrls").getString("original"));
-        urls.put("mini", jsonObjectBody.getJSONObject("illustUrls").getString("mini"));
-        urls.put("thumb", jsonObjectBody.getJSONObject("illustUrls").getString("thumb"));
-        urls.put("regular", jsonObjectBody.getJSONObject("illustUrls").getString("regular"));
+        urls.put("small", jsonObject.getJSONObject("illustUrls").getString("small"));
+        urls.put("original", jsonObject.getJSONObject("illustUrls").getString("original"));
+        urls.put("mini", jsonObject.getJSONObject("illustUrls").getString("mini"));
+        urls.put("thumb", jsonObject.getJSONObject("illustUrls").getString("thumb"));
+        urls.put("regular", jsonObject.getJSONObject("illustUrls").getString("regular"));
         this.illustUrls = urls;
-        this.pageCount = jsonObjectBody.getInteger("pageCount");
-        this.bookmarkCount = jsonObjectBody.getInteger("bookmarkCount");
-        this.likeCount = jsonObjectBody.getInteger("likeCount");
-        this.viewCount = jsonObjectBody.getInteger("viewCount");
-        this.grading = jsonObjectBody.getInteger("grading");
-        JSONArray tagArray = jsonObjectBody.getJSONArray("tags");
+        this.pageCount = jsonObject.getInteger("pageCount");
+        this.bookmarkCount = jsonObject.getInteger("bookmarkCount");
+        this.likeCount = jsonObject.getInteger("likeCount");
+        this.viewCount = jsonObject.getInteger("viewCount");
+        this.grading = jsonObject.getInteger("grading");
+        JSONArray tagArray = jsonObject.getJSONArray("tags");
         this.tags = new String[tagArray.size()];
         for (int i = 0; i < tagArray.size(); i++) {
             tags[i] = tagArray.getString(i);
         }
-        this.createDate = jsonObjectBody.getString("createDate");
-        this.updateDate = jsonObjectBody.getString("updateDate");
+        this.createDate = jsonObject.getString("createDate");
+        this.updateDate = jsonObject.getString("updateDate");
         this.crawlDate = jsonObject.getString("crawlDate");
 
         return this;
@@ -73,24 +72,21 @@ public class PixivData {
      */
     public JSONObject toJsonObject() {
         JSONObject outputJson = new JSONObject();
-        JSONObject outputJsonBody = new JSONObject();
-        outputJsonBody.put("artworkId", artworkId);
-        outputJsonBody.put("artworkTitle", artworkTitle);
-        outputJsonBody.put("authorId", authorId);
-        outputJsonBody.put("authorName", authorName);
-        outputJsonBody.put("description", description);
-        outputJsonBody.put("illustUrls", illustUrls);
-        outputJsonBody.put("pageCount", pageCount);
-        outputJsonBody.put("bookmarkCount", bookmarkCount);
-        outputJsonBody.put("likeCount", likeCount);
-        outputJsonBody.put("viewCount", viewCount);
-        outputJsonBody.put("grading", grading);
-        outputJsonBody.put("tags", tags);
-        outputJsonBody.put("createDate", createDate);
-        outputJsonBody.put("updateDate", updateDate);
-        outputJsonBody.put("crawlDate", crawlDate);
-
-        outputJson.put("body", outputJsonBody);
+        outputJson.put("artworkId", artworkId);
+        outputJson.put("artworkTitle", artworkTitle);
+        outputJson.put("authorId", authorId);
+        outputJson.put("authorName", authorName);
+        outputJson.put("description", description);
+        outputJson.put("illustUrls", illustUrls);
+        outputJson.put("pageCount", pageCount);
+        outputJson.put("bookmarkCount", bookmarkCount);
+        outputJson.put("likeCount", likeCount);
+        outputJson.put("viewCount", viewCount);
+        outputJson.put("grading", grading);
+        outputJson.put("tags", tags);
+        outputJson.put("createDate", createDate);
+        outputJson.put("updateDate", updateDate);
+        outputJson.put("crawlDate", crawlDate);
 
         return outputJson;
     }

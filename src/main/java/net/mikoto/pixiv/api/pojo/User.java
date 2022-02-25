@@ -1,5 +1,8 @@
 package net.mikoto.pixiv.api.pojo;
 
+import com.alibaba.fastjson.JSONObject;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author mikoto
  * @date 2022/2/1 19:22
@@ -76,5 +79,31 @@ public class User {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public JSONObject toJsonObject() {
+        JSONObject outputJsonObject = new JSONObject();
+
+        outputJsonObject.put("id", id);
+        outputJsonObject.put("name", name);
+        outputJsonObject.put("password", password);
+        outputJsonObject.put("salt", salt);
+        outputJsonObject.put("profile", profile);
+        outputJsonObject.put("createTime", createTime);
+        outputJsonObject.put("updateTime", updateTime);
+
+        return outputJsonObject;
+    }
+
+    public User loadJson(@NotNull JSONObject jsonObject) {
+        this.id = jsonObject.getInteger("id");
+        this.name = jsonObject.getString("name");
+        this.password = jsonObject.getString("password");
+        this.salt = jsonObject.getString("salt");
+        this.profile = jsonObject.getString("profile");
+        this.createTime = jsonObject.getString("createTime");
+        this.updateTime = jsonObject.getString("updateTime");
+
+        return this;
     }
 }
