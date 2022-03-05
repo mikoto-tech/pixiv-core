@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,30 +66,15 @@ public class PixivData {
         return this;
     }
 
-    /**
-     * Change pixiv data to fast json object.
-     *
-     * @return A fast json object.
-     */
-    public JSONObject toJsonObject() {
-        JSONObject outputJson = new JSONObject();
-        outputJson.put("artworkId", artworkId);
-        outputJson.put("artworkTitle", artworkTitle);
-        outputJson.put("authorId", authorId);
-        outputJson.put("authorName", authorName);
-        outputJson.put("description", description);
-        outputJson.put("illustUrls", illustUrls);
-        outputJson.put("pageCount", pageCount);
-        outputJson.put("bookmarkCount", bookmarkCount);
-        outputJson.put("likeCount", likeCount);
-        outputJson.put("viewCount", viewCount);
-        outputJson.put("grading", grading);
-        outputJson.put("tags", tags);
-        outputJson.put("createDate", createDate);
-        outputJson.put("updateDate", updateDate);
-        outputJson.put("crawlDate", crawlDate);
+    public JSONObject toJsonObject() throws IllegalAccessException {
+        JSONObject outputJsonObject = new JSONObject();
 
-        return outputJson;
+        for (Field field :
+                this.getClass().getDeclaredFields()) {
+            outputJsonObject.put(field.getName(), field.get(this));
+        }
+
+        return outputJsonObject;
     }
 
     public int getArtworkId() {

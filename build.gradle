@@ -40,4 +40,9 @@ publishing {
 dependencies {
     implementation 'com.alibaba:fastjson:1.2.79'
     implementation 'org.jetbrains:annotations:22.0.0'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }

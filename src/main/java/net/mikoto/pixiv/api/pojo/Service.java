@@ -1,6 +1,9 @@
 package net.mikoto.pixiv.api.pojo;
 
 import com.alibaba.fastjson.JSONObject;
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Field;
 
 /**
  * @author mikoto
@@ -53,15 +56,23 @@ public class Service {
         this.updateTime = updateTime;
     }
 
-    public JSONObject toJsonObject() {
+    public JSONObject toJsonObject() throws IllegalAccessException {
         JSONObject outputJsonObject = new JSONObject();
 
-        outputJsonObject.put("id", id);
-        outputJsonObject.put("serviceType", serviceType);
-        outputJsonObject.put("address", address);
-        outputJsonObject.put("createTime", createTime);
-        outputJsonObject.put("updateTime", updateTime);
+        for (Field field :
+                this.getClass().getDeclaredFields()) {
+            outputJsonObject.put(field.getName(), field.get(this));
+        }
 
         return outputJsonObject;
+    }
+
+    public Service loadJson(@NotNull JSONObject jsonObject) throws IllegalAccessException {
+        for (Field field :
+                this.getClass().getDeclaredFields()) {
+            field.set(this, jsonObject.get(field.getName()));
+        }
+
+        return this;
     }
 }

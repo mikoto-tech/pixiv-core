@@ -3,17 +3,19 @@ package net.mikoto.pixiv.api.pojo;
 import com.alibaba.fastjson.JSONObject;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Field;
+
 /**
  * @author mikoto
  * @date 2022/2/1 19:22
  */
 public class User {
     private int id;
-    private String name;
-    private String password;
-    private String salt;
-    private String key;
-    private String profile;
+    private String userName;
+    private String userPassword;
+    private String userSalt;
+    private String userKey;
+    private String profileUrl;
     private String createTime;
     private String updateTime;
 
@@ -25,44 +27,44 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getSalt() {
-        return salt;
+    public String getUserSalt() {
+        return userSalt;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public void setUserSalt(String userSalt) {
+        this.userSalt = userSalt;
     }
 
-    public String getKey() {
-        return key;
+    public String getUserKey() {
+        return userKey;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 
-    public String getProfile() {
-        return profile;
+    public String getProfileUrl() {
+        return profileUrl;
     }
 
-    public void setProfile(String profile) {
-        this.profile = profile;
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
     }
 
     public String getCreateTime() {
@@ -81,28 +83,22 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    public JSONObject toJsonObject() {
+    public JSONObject toJsonObject() throws IllegalAccessException {
         JSONObject outputJsonObject = new JSONObject();
 
-        outputJsonObject.put("id", id);
-        outputJsonObject.put("name", name);
-        outputJsonObject.put("password", password);
-        outputJsonObject.put("salt", salt);
-        outputJsonObject.put("profile", profile);
-        outputJsonObject.put("createTime", createTime);
-        outputJsonObject.put("updateTime", updateTime);
+        for (Field field :
+                this.getClass().getDeclaredFields()) {
+            outputJsonObject.put(field.getName(), field.get(this));
+        }
 
         return outputJsonObject;
     }
 
-    public User loadJson(@NotNull JSONObject jsonObject) {
-        this.id = jsonObject.getInteger("id");
-        this.name = jsonObject.getString("name");
-        this.password = jsonObject.getString("password");
-        this.salt = jsonObject.getString("salt");
-        this.profile = jsonObject.getString("profile");
-        this.createTime = jsonObject.getString("createTime");
-        this.updateTime = jsonObject.getString("updateTime");
+    public User loadJson(@NotNull JSONObject jsonObject) throws IllegalAccessException {
+        for (Field field :
+                this.getClass().getDeclaredFields()) {
+            field.set(this, jsonObject.get(field.getName()));
+        }
 
         return this;
     }
