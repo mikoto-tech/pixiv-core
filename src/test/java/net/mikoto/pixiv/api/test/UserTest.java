@@ -2,6 +2,7 @@ package net.mikoto.pixiv.api.test;
 
 import com.alibaba.fastjson.JSONObject;
 import net.mikoto.pixiv.api.pojo.User;
+import net.mikoto.pixiv.api.util.HttpApiUtil;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -21,5 +22,16 @@ public class UserTest {
         JSONObject jsonObject = user.toJsonObject();
         user.loadJson(jsonObject);
         assert user.toJsonObject().equals(jsonObject);
+    }
+
+    @Test
+    public void testHttpApi() throws NoSuchMethodException {
+        System.out.println(
+                HttpApiUtil.getHttpApi(
+                        net.mikoto.pixiv.api.http.central.patcher.Login.class,
+                        "test1",
+                        "test2"
+                )
+        );
     }
 }
