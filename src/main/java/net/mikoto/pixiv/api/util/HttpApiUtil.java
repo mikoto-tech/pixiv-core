@@ -28,6 +28,29 @@ public class HttpApiUtil {
                 }
             }
         }
+        StringBuilder url = new StringBuilder(getHttpApiPath(path));
+        url.append("?");
+
+        int parameterCount = 0;
+        for (int i = 0; i < api.getParameters().length; i++) {
+            for (Annotation annotation :
+                    api.getParameters()[i].getAnnotations()) {
+                if (annotation instanceof HttpApiParameter) {
+                    url
+                            .append(((HttpApiParameter) annotation).value())
+                            .append("=")
+                            .append(values[parameterCount]);
+                    parameterCount += 1;
+                }
+            }
+            if (i != api.getParameters().length - 1) {
+                url.append("&");
+            }
+        }
+        return url.toString();
+    }
+
+    public static @NotNull String getHttpApiPath(Class<?> path) {
         StringBuilder url = new StringBuilder();
 
         // Traverse the parent node from the incoming node
@@ -51,24 +74,6 @@ public class HttpApiUtil {
         for (String pathString :
                 pathArrayList) {
             url.append(pathString);
-        }
-        url.append("?");
-
-        int parameterCount = 0;
-        for (int i = 0; i < api.getParameters().length; i++) {
-            for (Annotation annotation :
-                    api.getParameters()[i].getAnnotations()) {
-                if (annotation instanceof HttpApiParameter) {
-                    url
-                            .append(((HttpApiParameter) annotation).value())
-                            .append("=")
-                            .append(values[parameterCount]);
-                    parameterCount += 1;
-                }
-            }
-            if (i != api.getParameters().length - 1) {
-                url.append("&");
-            }
         }
         return url.toString();
     }
