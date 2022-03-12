@@ -7,11 +7,13 @@ import net.mikoto.pixiv.api.http.forward.Artwork;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.FORWARD_ARTWORK_GET_IMAGE;
+
 /**
  * @author mikoto
  * @date 2022/3/12 21:19
  */
-@HttpApiPath("/getImage")
+@HttpApiPath(FORWARD_ARTWORK_GET_IMAGE)
 @HttpApiParentNode(Artwork.class)
 public interface GetImage {
     /**

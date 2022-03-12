@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_CENTRAL_INSERT_USER;
+
 /**
  * @author mikoto
  * @date 2022/3/12 4:13
  */
-@HttpApiPath("/insertUser")
+@HttpApiPath(DATABASE_CENTRAL_INSERT_USER)
 @HttpApiParentNode(Central.class)
 public interface InsertUser {
     /**

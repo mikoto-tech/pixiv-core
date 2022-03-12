@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.FORWARD_ARTWORK_GET_INFORMATION;
+
 /**
  * @author mikoto
  * @date 2022/3/12 21:23
  */
-@HttpApiPath("/getInformation")
+@HttpApiPath(FORWARD_ARTWORK_GET_INFORMATION)
 @HttpApiParentNode(Artwork.class)
 public interface GetInformation {
     /**

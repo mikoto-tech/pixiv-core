@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.CENTRAL_USER_LOGIN;
+
 /**
  * @author mikoto
  * @date 2022/3/12 4:07
  */
-@HttpApiPath("/login")
+@HttpApiPath(CENTRAL_USER_LOGIN)
 @HttpApiParentNode(User.class)
 public interface Login {
     /**

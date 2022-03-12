@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.CENTRAL_USER_REGISTER;
+
 /**
  * @author mikoto
  * @date 2022/3/12 4:01
  */
-@HttpApiPath("/register")
+@HttpApiPath(CENTRAL_USER_REGISTER)
 @HttpApiParentNode(User.class)
 public interface Register {
     /**

@@ -7,11 +7,13 @@ import net.mikoto.pixiv.api.http.central.Web;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.CENTRAL_WEB_PUBLIC_KEY;
+
 /**
  * @author mikoto
  * @date 2022/3/12 4:09
  */
-@HttpApiPath("/publicKey")
+@HttpApiPath(CENTRAL_WEB_PUBLIC_KEY)
 @HttpApiParentNode(Web.class)
 public interface PublicKey {
     /**

@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_PATCHER_INSERT_PIXIV_DATA;
+
 /**
  * @author mikoto
  * @date 2022/3/12 11:34
  */
 @HttpApiPath(
-        value = "/insertPixivData",
+        value = DATABASE_PATCHER_INSERT_PIXIV_DATA,
         method = RequestMethod.POST
 )
 @HttpApiParentNode(Patcher.class)

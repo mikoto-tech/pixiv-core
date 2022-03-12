@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
+import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_CENTRAL_GET_USER_BY_USER_NAME;
+
 /**
  * @author mikoto
  * @date 2022/3/12 4:14
  */
-@HttpApiPath("/getUserByUserName")
+@HttpApiPath(DATABASE_CENTRAL_GET_USER_BY_USER_NAME)
 @HttpApiParentNode(Central.class)
 public interface GetUserByUserName {
     /**
