@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     compileOnly 'com.squareup.okhttp3:okhttp:4.9.3'
-    compileOnly 'org.jetbrains:annotations:20.1.0'
+    compileOnly 'org.jetbrains:annotations:23.0.0'
     compileOnly 'com.alibaba:fastjson:1.2.79'
     compileOnly 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'com.alibaba:fastjson:1.2.79'
