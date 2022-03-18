@@ -23,9 +23,10 @@ public interface GetImage {
      * @param key      The key of Pixiv-Forward.
      * @param url      The url of image.
      * @return The data of the image.
+     * @throws Exception exceptions.
      */
     @HttpApi
     byte[] getImageHttpApi(HttpServletResponse response,
                            String key,
-                           String url);
+                           String url) throws Exception;
 }

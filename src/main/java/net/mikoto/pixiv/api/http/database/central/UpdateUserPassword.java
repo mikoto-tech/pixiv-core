@@ -28,11 +28,12 @@ public interface UpdateUserPassword {
      * @param newUserPassword The userName of user.
      * @param newUserSalt     The new salt of user.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject getUserByUserNameHttpApi(HttpServletResponse response,
                                         @RequestParam @HttpApiParameter("key") String key,
                                         @RequestParam @HttpApiParameter("userId") String userId,
                                         @RequestParam @HttpApiParameter("newUserPassword") String newUserPassword,
-                                        @RequestParam @HttpApiParameter("newUserSalt") String newUserSalt);
+                                        @RequestParam @HttpApiParameter("newUserSalt") String newUserSalt) throws Exception;
 }

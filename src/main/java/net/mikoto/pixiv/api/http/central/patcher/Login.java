@@ -26,9 +26,10 @@ public interface Login {
      * @param address  The address of patcher.
      * @param userKey  The key of the user.
      * @return Token and database address.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject loginHttpApi(HttpServletResponse response,
                             @RequestParam @HttpApiParameter("address") String address,
-                            @RequestParam @HttpApiParameter("userKey") String userKey);
+                            @RequestParam @HttpApiParameter("userKey") String userKey) throws Exception;
 }

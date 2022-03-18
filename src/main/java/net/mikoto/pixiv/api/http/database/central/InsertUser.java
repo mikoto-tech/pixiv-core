@@ -30,6 +30,7 @@ public interface InsertUser {
      * @param profileUrl   The profile url of user.
      * @param createTime   The user object create time.
      * @param updateTime   The user object update time.
+     * @throws Exception exceptions.
      */
     @HttpApi
     void insertUserHttpApi(HttpServletResponse response,
@@ -40,5 +41,5 @@ public interface InsertUser {
                            @RequestParam @HttpApiParameter("userKey") String userKey,
                            @RequestParam @HttpApiParameter("profileUrl") String profileUrl,
                            @RequestParam @HttpApiParameter("createTime") String createTime,
-                           @RequestParam @HttpApiParameter("updateTime") String updateTime);
+                           @RequestParam @HttpApiParameter("updateTime") String updateTime) throws Exception;
 }

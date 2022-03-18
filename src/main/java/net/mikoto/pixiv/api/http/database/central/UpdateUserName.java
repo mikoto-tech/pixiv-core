@@ -27,10 +27,11 @@ public interface UpdateUserName {
      * @param userId      The user if of user
      * @param newUserName The userName of user.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject updateUserNameHttpApi(HttpServletResponse response,
                                      @RequestParam @HttpApiParameter("key") String key,
                                      @RequestParam @HttpApiParameter("userId") String userId,
-                                     @RequestParam @HttpApiParameter("newUserName") String newUserName);
+                                     @RequestParam @HttpApiParameter("newUserName") String newUserName) throws Exception;
 }

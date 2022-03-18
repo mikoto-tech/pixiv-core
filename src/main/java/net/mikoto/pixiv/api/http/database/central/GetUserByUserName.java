@@ -26,9 +26,10 @@ public interface GetUserByUserName {
      * @param key      The key of Pixiv-Database
      * @param userName The userName of user.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject getUserByUserNameHttpApi(HttpServletResponse response,
                                         @RequestParam @HttpApiParameter("key") String key,
-                                        @RequestParam @HttpApiParameter("userName") String userName);
+                                        @RequestParam @HttpApiParameter("userName") String userName) throws Exception;
 }

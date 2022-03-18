@@ -27,10 +27,11 @@ public interface Register {
      * @param userName          The name of the user need to register.
      * @param userPassword      The password of the user need to register.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject registerHttpApi(HttpServletResponse response,
                                @RequestParam @HttpApiParameter("reCaptchaResponse") String reCaptchaResponse,
                                @RequestParam @HttpApiParameter("userName") String userName,
-                               @RequestParam @HttpApiParameter("userPassword") String userPassword);
+                               @RequestParam @HttpApiParameter("userPassword") String userPassword) throws Exception;
 }

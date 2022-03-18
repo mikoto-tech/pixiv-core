@@ -26,9 +26,10 @@ public interface GetInformation {
      * @param key       The key of Pixiv-Forward.
      * @param artworkId The id of the artwork.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject getInformationHttpApi(HttpServletResponse response,
                                      @RequestParam @HttpApiParameter("key") String key,
-                                     @RequestParam @HttpApiParameter("artworkId") String artworkId);
+                                     @RequestParam @HttpApiParameter("artworkId") String artworkId) throws Exception;
 }

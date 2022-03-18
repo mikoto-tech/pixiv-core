@@ -21,7 +21,8 @@ public interface PublicKey {
      *
      * @param response A http servlet response object.
      * @return Public key.
+     * @throws Exception exceptions.
      */
     @HttpApi
-    String getPublicKeyHttpApi(HttpServletResponse response);
+    String getPublicKeyHttpApi(HttpServletResponse response) throws Exception;
 }

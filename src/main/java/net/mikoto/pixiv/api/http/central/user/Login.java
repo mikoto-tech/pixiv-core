@@ -27,10 +27,11 @@ public interface Login {
      * @param userName          The name of the user need to log.
      * @param userPassword      The password of the user need to log.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject loginHttpApi(HttpServletResponse response,
                             @RequestParam @HttpApiParameter("reCaptchaResponse") String reCaptchaResponse,
                             @RequestParam @HttpApiParameter("userName") String userName,
-                            @RequestParam @HttpApiParameter("userPassword") String userPassword);
+                            @RequestParam @HttpApiParameter("userPassword") String userPassword) throws Exception;
 }

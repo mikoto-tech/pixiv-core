@@ -27,10 +27,11 @@ public interface UpdateUserKey {
      * @param userId     The user if of user
      * @param newUserKey The user's key of user.
      * @return Result.
+     * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject updateUserKeyHttpApi(HttpServletResponse response,
                                     @RequestParam @HttpApiParameter("key") String key,
                                     @RequestParam @HttpApiParameter("userId") String userId,
-                                    @RequestParam @HttpApiParameter("newUserKey") String newUserKey);
+                                    @RequestParam @HttpApiParameter("newUserKey") String newUserKey) throws Exception;
 }
