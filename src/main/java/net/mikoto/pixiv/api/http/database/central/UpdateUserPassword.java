@@ -31,9 +31,9 @@ public interface UpdateUserPassword {
      * @throws Exception exceptions.
      */
     @HttpApi
-    JSONObject getUserByUserNameHttpApi(HttpServletResponse response,
-                                        @RequestParam @HttpApiParameter("key") String key,
-                                        @RequestParam @HttpApiParameter("userId") String userId,
-                                        @RequestParam @HttpApiParameter("newUserPassword") String newUserPassword,
-                                        @RequestParam @HttpApiParameter("newUserSalt") String newUserSalt) throws Exception;
+    JSONObject updateUserPasswordHttpApi(HttpServletResponse response,
+                                         @RequestParam @HttpApiParameter("key") String key,
+                                         @RequestParam @HttpApiParameter("userId") String userId,
+                                         @RequestParam @HttpApiParameter("newUserPassword") String newUserPassword,
+                                         @RequestParam @HttpApiParameter("newUserSalt") String newUserSalt) throws Exception;
 }

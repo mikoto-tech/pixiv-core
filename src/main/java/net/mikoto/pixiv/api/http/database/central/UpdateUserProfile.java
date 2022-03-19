@@ -30,8 +30,8 @@ public interface UpdateUserProfile {
      * @throws Exception exceptions.
      */
     @HttpApi
-    JSONObject updateUserNameHttpApi(HttpServletResponse response,
-                                     @RequestParam @HttpApiParameter("key") String key,
-                                     @RequestParam @HttpApiParameter("userId") String userId,
-                                     @RequestParam @HttpApiParameter("newUserName") String newUserName) throws Exception;
+    JSONObject updateUserProfileHttpApi(HttpServletResponse response,
+                                        @RequestParam @HttpApiParameter("key") String key,
+                                        @RequestParam @HttpApiParameter("userId") String userId,
+                                        @RequestParam @HttpApiParameter("newUserName") String newUserName) throws Exception;
 }

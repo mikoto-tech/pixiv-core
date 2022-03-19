@@ -29,22 +29,24 @@ public class HttpApiUtil {
             }
         }
         StringBuilder url = new StringBuilder(getHttpApiPath(path));
-        url.append("?");
+        if (values.length > 0) {
+            url.append("?");
 
-        int parameterCount = 0;
-        for (int i = 0; i < api.getParameters().length; i++) {
-            for (Annotation annotation :
-                    api.getParameters()[i].getAnnotations()) {
-                if (annotation instanceof HttpApiParameter) {
-                    url
-                            .append(((HttpApiParameter) annotation).value())
-                            .append("=")
-                            .append(values[parameterCount]);
-                    parameterCount += 1;
+            int parameterCount = 0;
+            for (int i = 0; i < api.getParameters().length; i++) {
+                for (Annotation annotation :
+                        api.getParameters()[i].getAnnotations()) {
+                    if (annotation instanceof HttpApiParameter) {
+                        url
+                                .append(((HttpApiParameter) annotation).value())
+                                .append("=")
+                                .append(values[parameterCount]);
+                        parameterCount += 1;
+                    }
                 }
-            }
-            if (i != api.getParameters().length - 1) {
-                url.append("&");
+                if (i != api.getParameters().length - 1) {
+                    url.append("&");
+                }
             }
         }
         return url.toString();

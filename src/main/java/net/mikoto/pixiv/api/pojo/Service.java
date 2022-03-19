@@ -10,19 +10,10 @@ import java.lang.reflect.Field;
  * @date 2022/2/1 19:28
  */
 public class Service {
-    private int id;
     private ServiceType serviceType;
     private String address;
     private String createTime;
     private String updateTime;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public ServiceType getServiceType() {
         return serviceType;

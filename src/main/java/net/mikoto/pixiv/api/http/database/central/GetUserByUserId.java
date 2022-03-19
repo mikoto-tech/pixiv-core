@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_CENTRAL_GET_USER_BY_USER_NAME;
+import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_CENTRAL_GET_USER_BY_USER_ID;
 
 /**
  * @author mikoto
- * @date 2022/3/12 4:14
+ * @date 2022/3/19 1:01
  */
-@HttpApiPath(DATABASE_CENTRAL_GET_USER_BY_USER_NAME)
+@HttpApiPath(DATABASE_CENTRAL_GET_USER_BY_USER_ID)
 @HttpApiParentNode(Central.class)
-public interface GetUserByUserName {
+public interface GetUserByUserId {
     /**
-     * Get user by userName.
+     * Get user by userId
      *
      * @param response A http servlet response object.
      * @param key      The key of Pixiv-Database
-     * @param userName The userName of the user.
+     * @param userId   The userId of the user.
      * @return Result.
      * @throws Exception exceptions.
      */
     @HttpApi
-    JSONObject getUserByUserNameHttpApi(HttpServletResponse response,
-                                        @RequestParam @HttpApiParameter("key") String key,
-                                        @RequestParam @HttpApiParameter("userName") String userName) throws Exception;
+    JSONObject getUserByUserIdHttpApi(HttpServletResponse response,
+                                      @RequestParam @HttpApiParameter("key") String key,
+                                      @RequestParam @HttpApiParameter("id") String userId) throws Exception;
 }

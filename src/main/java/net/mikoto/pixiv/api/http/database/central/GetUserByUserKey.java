@@ -1,7 +1,6 @@
 package net.mikoto.pixiv.api.http.database.central;
 
 import com.alibaba.fastjson.JSONObject;
-import net.mikoto.pixiv.api.annotation.HttpApi;
 import net.mikoto.pixiv.api.annotation.HttpApiParameter;
 import net.mikoto.pixiv.api.annotation.HttpApiParentNode;
 import net.mikoto.pixiv.api.annotation.HttpApiPath;
@@ -10,26 +9,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_CENTRAL_GET_USER_BY_USER_NAME;
+import static net.mikoto.pixiv.api.http.HttpApi.DATABASE_CENTRAL_GET_USER_BY_USER_KEY;
 
 /**
  * @author mikoto
- * @date 2022/3/12 4:14
+ * @date 2022/3/19 1:02
  */
-@HttpApiPath(DATABASE_CENTRAL_GET_USER_BY_USER_NAME)
+@HttpApiPath(DATABASE_CENTRAL_GET_USER_BY_USER_KEY)
 @HttpApiParentNode(Central.class)
-public interface GetUserByUserName {
+public interface GetUserByUserKey {
     /**
-     * Get user by userName.
+     * Get user by userKey.
      *
      * @param response A http servlet response object.
      * @param key      The key of Pixiv-Database
-     * @param userName The userName of the user.
+     * @param userKey  The userKey of the user.
      * @return Result.
      * @throws Exception exceptions.
      */
-    @HttpApi
-    JSONObject getUserByUserNameHttpApi(HttpServletResponse response,
-                                        @RequestParam @HttpApiParameter("key") String key,
-                                        @RequestParam @HttpApiParameter("userName") String userName) throws Exception;
+    JSONObject getUserByUserKeyHttpApi(HttpServletResponse response,
+                                       @RequestParam @HttpApiParameter("key") String key,
+                                       @RequestParam @HttpApiParameter("userKey") String userKey) throws Exception;
 }

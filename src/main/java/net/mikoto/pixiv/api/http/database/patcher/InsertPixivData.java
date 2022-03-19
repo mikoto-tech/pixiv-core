@@ -29,12 +29,14 @@ public interface InsertPixivData {
      *
      * @param request  A http servlet request object.
      * @param response A http servlet response object.
-     * @param token    The token of Pixiv-Patcher.
+     * @param address  The address of the Pixiv-Forward.
+     * @param sign     The sing of the data.
      * @return Result.
      * @throws Exception exceptions.
      */
     @HttpApi
     JSONObject insertPixivDataHttpApi(HttpServletRequest request,
                                       HttpServletResponse response,
-                                      @RequestParam @HttpApiParameter("token") String token) throws Exception;
+                                      @RequestParam @HttpApiParameter("address") String address,
+                                      @RequestParam @HttpApiParameter("sign") String sign) throws Exception;
 }
