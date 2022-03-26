@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'net.mikoto.pixiv'
-version = '1.3.4'
+version = '1.3.5'
 sourceCompatibility = '17'
 
 repositories {
@@ -17,9 +17,9 @@ repositories {
 dependencies {
     compileOnly 'com.squareup.okhttp3:okhttp:4.9.3'
     compileOnly 'org.jetbrains:annotations:23.0.0'
-    compileOnly 'com.alibaba:fastjson:1.2.79'
+    compileOnly 'com.alibaba:fastjson:1.2.80'
     compileOnly 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'com.alibaba:fastjson:1.2.79'
+    testImplementation 'com.alibaba:fastjson:1.2.80'
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -13,7 +13,7 @@ import java.util.Map;
  * Created at 21:30:24, 2021/9/19
  * Project: PixivRelay
  */
-public class PixivData {
+public class Artwork {
     private int artworkId;
     private String artworkTitle;
     private int authorId;
@@ -36,7 +36,7 @@ public class PixivData {
      * @param jsonObject Json object
      * @return Pixiv data
      */
-    public PixivData loadJson(@NotNull JSONObject jsonObject) {
+    public Artwork loadJson(@NotNull JSONObject jsonObject) {
         this.artworkId = jsonObject.getInteger("artworkId");
         this.artworkTitle = jsonObject.getString("artworkTitle");
         this.authorId = jsonObject.getInteger("authorId");
