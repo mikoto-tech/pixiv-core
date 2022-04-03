@@ -1,9 +1,11 @@
 package net.mikoto.pixiv.api.http.forward.artwork;
 
 import net.mikoto.pixiv.api.annotation.HttpApi;
+import net.mikoto.pixiv.api.annotation.HttpApiParameter;
 import net.mikoto.pixiv.api.annotation.HttpApiParentNode;
 import net.mikoto.pixiv.api.annotation.HttpApiPath;
 import net.mikoto.pixiv.api.http.forward.Artwork;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +29,6 @@ public interface GetImage {
      */
     @HttpApi
     byte[] getImageHttpApi(HttpServletResponse response,
-                           String key,
-                           String url) throws Exception;
+                           @RequestParam @HttpApiParameter("key") String key,
+                           @RequestParam @HttpApiParameter("url") String url) throws Exception;
 }
