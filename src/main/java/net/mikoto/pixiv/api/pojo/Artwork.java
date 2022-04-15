@@ -28,7 +28,7 @@ public class Artwork {
     private String[] tags;
     private String createDate;
     private String updateDate;
-    private String crawlDate;
+    private String patchDate;
 
     /**
      * Load pixiv data from json
@@ -61,7 +61,7 @@ public class Artwork {
         }
         this.createDate = jsonObject.getString("createDate");
         this.updateDate = jsonObject.getString("updateDate");
-        this.crawlDate = jsonObject.getString("crawlDate");
+        this.patchDate = jsonObject.getString("crawlDate");
 
         return this;
     }
@@ -189,12 +189,12 @@ public class Artwork {
         this.illustUrls = illustUrls;
     }
 
-    public String getCrawlDate() {
-        return crawlDate;
+    public String getPatchDate() {
+        return patchDate;
     }
 
-    public void setCrawlDate(String crawlDate) {
-        this.crawlDate = crawlDate;
+    public void setPatchDate(String patchDate) {
+        this.patchDate = patchDate;
     }
 }
 
