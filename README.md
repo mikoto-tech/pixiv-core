@@ -1,5 +1,7 @@
 # Mikoto-Pixiv-Api
 
+[![wakatime](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/441b2690-e980-4653-8154-57e3fe5f4b40.svg)](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/441b2690-e980-4653-8154-57e3fe5f4b40)
+
 `Mikoto-Pixiv-Api` 是为了
 
 1. 声明HTTP-API
