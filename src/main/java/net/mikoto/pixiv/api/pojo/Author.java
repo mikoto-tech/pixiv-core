@@ -1,8 +1,5 @@
 package net.mikoto.pixiv.api.pojo;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,8 +12,6 @@ import java.util.Objects;
  * @date 2022/4/21 9:02
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "author")
 public class Author {
     @Id
@@ -34,6 +29,62 @@ public class Author {
     private String background;
     @Column(name = "patch_time", nullable = false)
     private Date patchTime;
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getAuthorUrl() {
+        return authorUrl;
+    }
+
+    public void setAuthorUrl(String authorUrl) {
+        this.authorUrl = authorUrl;
+    }
+
+    public String getAuthorUrlBig() {
+        return authorUrlBig;
+    }
+
+    public void setAuthorUrlBig(String authorUrlBig) {
+        this.authorUrlBig = authorUrlBig;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public Date getPatchTime() {
+        return patchTime;
+    }
+
+    public void setPatchTime(Date patchTime) {
+        this.patchTime = patchTime;
+    }
 
     @Override
     public boolean equals(Object o) {
