@@ -1,6 +1,6 @@
 package net.mikoto.pixiv.api.http.database.central;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.api.annotation.HttpApi;
 import net.mikoto.pixiv.api.annotation.HttpApiParameter;
 import net.mikoto.pixiv.api.annotation.HttpApiParentNode;

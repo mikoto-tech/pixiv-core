@@ -71,4 +71,15 @@ public class ForwardServer {
     public int hashCode() {
         return Objects.hash(getAddress(), getWeight(), getCurrentWeight());
     }
+
+    @Override
+    public String toString() {
+        return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nForwardServer{" +
+                "address='" + address + '\'' +
+                ", weight=" + weight +
+                ", currentWeight=" + currentWeight +
+                ", key='" + key + '\'' +
+                ", publicKey='" + publicKey + '\'' +
+                '}';
+    }
 }

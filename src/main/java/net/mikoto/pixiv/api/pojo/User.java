@@ -1,10 +1,5 @@
 package net.mikoto.pixiv.api.pojo;
 
-import com.alibaba.fastjson.JSONObject;
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Field;
-
 /**
  * @author mikoto
  * @date 2022/2/1 19:22
@@ -81,25 +76,5 @@ public class User {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public JSONObject toJsonObject() throws IllegalAccessException {
-        JSONObject outputJsonObject = new JSONObject();
-
-        for (Field field :
-                this.getClass().getDeclaredFields()) {
-            outputJsonObject.put(field.getName(), field.get(this));
-        }
-
-        return outputJsonObject;
-    }
-
-    public User loadJson(@NotNull JSONObject jsonObject) throws IllegalAccessException {
-        for (Field field :
-                this.getClass().getDeclaredFields()) {
-            field.set(this, jsonObject.get(field.getName()));
-        }
-
-        return this;
     }
 }

@@ -1,81 +1,64 @@
 package net.mikoto.pixiv.api.pojo;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author mikoto
  * Created at 21:30:24, 2021/9/19
- * Project: PixivRelay
  */
+@Entity
+@Table(name = "artwork")
 public class Artwork {
+    @Id
+    @Column(name = "pk_artwork_id", nullable = false, unique = true)
     private int artworkId;
+    @Column(name = "artwork_title", nullable = false)
     private String artworkTitle;
+    @Column(name = "author_id", nullable = false)
     private int authorId;
-    private String authorName;
+    @Column(name = "has_series", nullable = false)
+    private boolean hasSeries;
+    @Column(name = "description", nullable = false)
     private String description;
-    private Map<String, String> illustUrls;
+    @Column(name = "illust_url_small", nullable = false)
+    private String illustUrlSmall;
+    @Column(name = "illust_url_Original", nullable = false)
+    private String illustUrlOriginal;
+    @Column(name = "illust_url_mini", nullable = false)
+    private String illustUrlMini;
+    @Column(name = "illust_url_Thumb", nullable = false)
+    private String illustUrlThumb;
+    @Column(name = "illust_url_Regular", nullable = false)
+    private String illustUrlRegular;
+    @Column(name = "page_count", nullable = false)
     private int pageCount;
+    @Column(name = "bookmark_count", nullable = false)
     private int bookmarkCount;
+    @Column(name = "like_count", nullable = false)
     private int likeCount;
+    @Column(name = "view_count", nullable = false)
     private int viewCount;
+    @Column(name = "grading", nullable = false)
     private int grading;
-    private String[] tags;
-    private String createDate;
-    private String updateDate;
-    private String patchDate;
-
-    /**
-     * Load pixiv data from json
-     *
-     * @param jsonObject Json object
-     * @return Pixiv data
-     */
-    public Artwork loadJson(@NotNull JSONObject jsonObject) {
-        this.artworkId = jsonObject.getInteger("artworkId");
-        this.artworkTitle = jsonObject.getString("artworkTitle");
-        this.authorId = jsonObject.getInteger("authorId");
-        this.authorName = jsonObject.getString("authorName");
-        this.description = jsonObject.getString("description");
-        Map<String, String> urls = new HashMap<>(5);
-        urls.put("small", jsonObject.getJSONObject("illustUrls").getString("small"));
-        urls.put("original", jsonObject.getJSONObject("illustUrls").getString("original"));
-        urls.put("mini", jsonObject.getJSONObject("illustUrls").getString("mini"));
-        urls.put("thumb", jsonObject.getJSONObject("illustUrls").getString("thumb"));
-        urls.put("regular", jsonObject.getJSONObject("illustUrls").getString("regular"));
-        this.illustUrls = urls;
-        this.pageCount = jsonObject.getInteger("pageCount");
-        this.bookmarkCount = jsonObject.getInteger("bookmarkCount");
-        this.likeCount = jsonObject.getInteger("likeCount");
-        this.viewCount = jsonObject.getInteger("viewCount");
-        this.grading = jsonObject.getInteger("grading");
-        JSONArray tagArray = jsonObject.getJSONArray("tags");
-        this.tags = new String[tagArray.size()];
-        for (int i = 0; i < tagArray.size(); i++) {
-            tags[i] = tagArray.getString(i);
-        }
-        this.createDate = jsonObject.getString("createDate");
-        this.updateDate = jsonObject.getString("updateDate");
-        this.patchDate = jsonObject.getString("crawlDate");
-
-        return this;
-    }
-
-    public JSONObject toJsonObject() throws IllegalAccessException {
-        JSONObject outputJsonObject = new JSONObject();
-
-        for (Field field :
-                this.getClass().getDeclaredFields()) {
-            outputJsonObject.put(field.getName(), field.get(this));
-        }
-
-        return outputJsonObject;
-    }
+    @Column(name = "tags", nullable = false)
+    private String tags;
+    @Column(name = "create_time", nullable = false)
+    private Date createTime;
+    @Column(name = "update_time", nullable = false)
+    private Date updateTime;
+    @Column(name = "patch_time", nullable = false)
+    private Date patchTime;
+    private int seriesId;
+    private int order;
+    private int nextArtworkId;
+    private String nextArtworkTitle;
+    private int previousArtworkId;
+    private String previousArtworkTitle;
 
     public int getArtworkId() {
         return artworkId;
@@ -109,12 +92,52 @@ public class Artwork {
         this.description = description;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public String getIllustUrlSmall() {
+        return illustUrlSmall;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setIllustUrlSmall(String illustUrlSmall) {
+        this.illustUrlSmall = illustUrlSmall;
+    }
+
+    public String getIllustUrlOriginal() {
+        return illustUrlOriginal;
+    }
+
+    public void setIllustUrlOriginal(String illustUrlOriginal) {
+        this.illustUrlOriginal = illustUrlOriginal;
+    }
+
+    public String getIllustUrlMini() {
+        return illustUrlMini;
+    }
+
+    public void setIllustUrlMini(String illustUrlMini) {
+        this.illustUrlMini = illustUrlMini;
+    }
+
+    public String getIllustUrlThumb() {
+        return illustUrlThumb;
+    }
+
+    public void setIllustUrlThumb(String illustUrlThumb) {
+        this.illustUrlThumb = illustUrlThumb;
+    }
+
+    public String getIllustUrlRegular() {
+        return illustUrlRegular;
+    }
+
+    public void setIllustUrlRegular(String illustUrlRegular) {
+        this.illustUrlRegular = illustUrlRegular;
+    }
+
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
     }
 
     public int getBookmarkCount() {
@@ -123,6 +146,14 @@ public class Artwork {
 
     public void setBookmarkCount(int bookmarkCount) {
         this.bookmarkCount = bookmarkCount;
+    }
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
     }
 
     public int getViewCount() {
@@ -141,60 +172,140 @@ public class Artwork {
         this.grading = grading;
     }
 
-    public int getPageCount() {
-        return pageCount;
-    }
-
-    public void setPageCount(int pageCount) {
-        this.pageCount = pageCount;
-    }
-
-    public int getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
-
-    public String[] getTags() {
+    public String getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 
-    public String getUpdateDate() {
-        return updateDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setUpdateDate(String updateDate) {
-        this.updateDate = updateDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getCreateDate() {
-        return createDate;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Map<String, String> getIllustUrls() {
-        return illustUrls;
+    public Date getPatchTime() {
+        return patchTime;
     }
 
-    public void setIllustUrls(Map<String, String> illustUrls) {
-        this.illustUrls = illustUrls;
+    public void setPatchTime(Date patchTime) {
+        this.patchTime = patchTime;
     }
 
-    public String getPatchDate() {
-        return patchDate;
+    public boolean isHasSeries() {
+        return hasSeries;
     }
 
-    public void setPatchDate(String patchDate) {
-        this.patchDate = patchDate;
+    public void setHasSeries(boolean hasSeries) {
+        this.hasSeries = hasSeries;
+    }
+
+    public int getSeriesId() {
+        return seriesId;
+    }
+
+    public void setSeriesId(int seriesId) {
+        this.seriesId = seriesId;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public int getNextArtworkId() {
+        return nextArtworkId;
+    }
+
+    public void setNextArtworkId(int nextArtworkId) {
+        this.nextArtworkId = nextArtworkId;
+    }
+
+    public String getNextArtworkTitle() {
+        return nextArtworkTitle;
+    }
+
+    public void setNextArtworkTitle(String nextArtworkTitle) {
+        this.nextArtworkTitle = nextArtworkTitle;
+    }
+
+    public int getPreviousArtworkId() {
+        return previousArtworkId;
+    }
+
+    public void setPreviousArtworkId(int previousArtworkId) {
+        this.previousArtworkId = previousArtworkId;
+    }
+
+    public String getPreviousArtworkTitle() {
+        return previousArtworkTitle;
+    }
+
+    public void setPreviousArtworkTitle(String previousArtworkTitle) {
+        this.previousArtworkTitle = previousArtworkTitle;
+    }
+
+    @Override
+    public String toString() {
+        return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nArtwork{" +
+                "artworkId=" + artworkId +
+                ", artworkTitle='" + artworkTitle + '\'' +
+                ", authorId=" + authorId +
+                ", hasSeries=" + hasSeries +
+                ", description='" + description + '\'' +
+                ", illustUrlSmall='" + illustUrlSmall + '\'' +
+                ", illustUrlOriginal='" + illustUrlOriginal + '\'' +
+                ", illustUrlMini='" + illustUrlMini + '\'' +
+                ", illustUrlThumb='" + illustUrlThumb + '\'' +
+                ", illustUrlRegular='" + illustUrlRegular + '\'' +
+                ", pageCount=" + pageCount +
+                ", bookmarkCount=" + bookmarkCount +
+                ", likeCount=" + likeCount +
+                ", viewCount=" + viewCount +
+                ", grading=" + grading +
+                ", tags='" + tags + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", patchTime=" + patchTime +
+                ", seriesId=" + seriesId +
+                ", order=" + order +
+                ", nextArtworkId=" + nextArtworkId +
+                ", nextArtworkTitle='" + nextArtworkTitle + '\'' +
+                ", previousArtworkId=" + previousArtworkId +
+                ", previousArtworkTitle='" + previousArtworkTitle + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Artwork artwork = (Artwork) o;
+        return artworkId == artwork.artworkId && authorId == artwork.authorId && pageCount == artwork.pageCount && bookmarkCount == artwork.bookmarkCount && likeCount == artwork.likeCount && viewCount == artwork.viewCount && grading == artwork.grading && artworkTitle.equals(artwork.artworkTitle) && Objects.equals(description, artwork.description) && illustUrlSmall.equals(artwork.illustUrlSmall) && illustUrlOriginal.equals(artwork.illustUrlOriginal) && illustUrlMini.equals(artwork.illustUrlMini) && illustUrlThumb.equals(artwork.illustUrlThumb) && illustUrlRegular.equals(artwork.illustUrlRegular) && tags.equals(artwork.tags) && createTime.equals(artwork.createTime) && updateTime.equals(artwork.updateTime) && patchTime.equals(artwork.patchTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(artworkId, artworkTitle, authorId, description, illustUrlSmall, illustUrlOriginal, illustUrlMini, illustUrlThumb, illustUrlRegular, pageCount, bookmarkCount, likeCount, viewCount, grading, tags, createTime, updateTime, patchTime);
     }
 }
 
