@@ -1,5 +1,8 @@
 package net.mikoto.pixiv.api.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +14,8 @@ import java.util.Objects;
  * @date 2022/5/1 0:01
  */
 @Entity
+@Getter
+@Setter
 @Table(name = "series_artwork")
 public class SeriesArtwork {
     @Id
@@ -30,70 +35,6 @@ public class SeriesArtwork {
     private String previousArtworkTitle;
     @Column(name = "illust_url_thumb")
     private String illustUrlThumb;
-
-    public int getArtworkId() {
-        return artworkId;
-    }
-
-    public void setArtworkId(int artworkId) {
-        this.artworkId = artworkId;
-    }
-
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
-    public int getSeriesId() {
-        return seriesId;
-    }
-
-    public void setSeriesId(int seriesId) {
-        this.seriesId = seriesId;
-    }
-
-    public int getNextArtworkId() {
-        return nextArtworkId;
-    }
-
-    public void setNextArtworkId(int nextArtworkId) {
-        this.nextArtworkId = nextArtworkId;
-    }
-
-    public String getNextArtworkTitle() {
-        return nextArtworkTitle;
-    }
-
-    public void setNextArtworkTitle(String nextArtworkTitle) {
-        this.nextArtworkTitle = nextArtworkTitle;
-    }
-
-    public int getPreviousArtworkId() {
-        return previousArtworkId;
-    }
-
-    public void setPreviousArtworkId(int previousArtworkId) {
-        this.previousArtworkId = previousArtworkId;
-    }
-
-    public String getPreviousArtworkTitle() {
-        return previousArtworkTitle;
-    }
-
-    public void setPreviousArtworkTitle(String previousArtworkTitle) {
-        this.previousArtworkTitle = previousArtworkTitle;
-    }
-
-    public String getIllustUrlThumb() {
-        return illustUrlThumb;
-    }
-
-    public void setIllustUrlThumb(String illustUrlThumb) {
-        this.illustUrlThumb = illustUrlThumb;
-    }
 
     @Override
     public boolean equals(Object o) {

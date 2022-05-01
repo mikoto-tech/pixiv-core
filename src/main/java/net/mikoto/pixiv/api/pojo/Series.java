@@ -1,5 +1,8 @@
 package net.mikoto.pixiv.api.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +15,8 @@ import java.util.Objects;
  * @date 2022/4/22 12:38
  */
 @Entity
+@Getter
+@Setter
 @Table(name = "series")
 public class Series {
     @Id
@@ -31,70 +36,6 @@ public class Series {
     private Date updateTime;
     @Column(name = "patch_time", nullable = false)
     private Date patchTime;
-
-    public int getSeriesId() {
-        return seriesId;
-    }
-
-    public void setSeriesId(int seriesId) {
-        this.seriesId = seriesId;
-    }
-
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
-
-    public String getSeriesTitle() {
-        return seriesTitle;
-    }
-
-    public void setSeriesTitle(String seriesTitle) {
-        this.seriesTitle = seriesTitle;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Date getPatchTime() {
-        return patchTime;
-    }
-
-    public void setPatchTime(Date patchTime) {
-        this.patchTime = patchTime;
-    }
-
-    public String getFrontImageUrl() {
-        return frontImageUrl;
-    }
-
-    public void setFrontImageUrl(String frontImageUrl) {
-        this.frontImageUrl = frontImageUrl;
-    }
 
     @Override
     public String toString() {
