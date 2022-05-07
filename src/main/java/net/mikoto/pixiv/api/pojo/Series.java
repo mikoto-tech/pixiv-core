@@ -17,19 +17,12 @@ public class Series {
     @Id
     @Column(name = "pk_series_id", nullable = false, unique = true)
     private int seriesId;
-    @Column(name = "author_id", nullable = false)
     private int authorId;
-    @Column(name = "series_title", nullable = false)
     private String seriesTitle;
-    @Column(name = "front_image_url")
     private String frontImageUrl;
-    @Column(name = "description")
     private String description;
-    @Column(name = "create_time", nullable = false)
     private Date createTime;
-    @Column(name = "update_time", nullable = false)
     private Date updateTime;
-    @Column(name = "patch_time", nullable = false)
     private Date patchTime;
 
     public int getSeriesId() {

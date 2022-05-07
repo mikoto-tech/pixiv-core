@@ -17,53 +17,29 @@ public class Artwork {
     @Id
     @Column(name = "pk_artwork_id", nullable = false, unique = true)
     private int artworkId;
-    @Column(name = "artwork_title", nullable = false)
     private String artworkTitle;
-    @Column(name = "author_id", nullable = false)
     private int authorId;
-    @Column(name = "has_series", nullable = false)
     private boolean hasSeries;
-    @Column(name = "description", nullable = false)
     private String description;
-    @Column(name = "illust_url_small", nullable = false)
     private String illustUrlSmall;
-    @Column(name = "illust_url_Original", nullable = false)
     private String illustUrlOriginal;
-    @Column(name = "illust_url_mini", nullable = false)
     private String illustUrlMini;
-    @Column(name = "illust_url_Thumb", nullable = false)
     private String illustUrlThumb;
-    @Column(name = "illust_url_Regular", nullable = false)
     private String illustUrlRegular;
-    @Column(name = "page_count", nullable = false)
     private int pageCount;
-    @Column(name = "bookmark_count", nullable = false)
     private int bookmarkCount;
-    @Column(name = "like_count", nullable = false)
     private int likeCount;
-    @Column(name = "view_count", nullable = false)
     private int viewCount;
-    @Column(name = "grading", nullable = false)
     private int grading;
-    @Column(name = "tags", nullable = false)
     private String tags;
-    @Column(name = "create_time", nullable = false)
     private Date createTime;
-    @Column(name = "update_time", nullable = false)
     private Date updateTime;
-    @Column(name = "patch_time", nullable = false)
     private Date patchTime;
-    @Column(name = "series_id")
     private int seriesId;
-    @Column(name = "order")
-    private int order;
-    @Column(name = "next_artwork_id")
+    private int seriesOrder;
     private int nextArtworkId;
-    @Column(name = "next_artwork_title")
     private String nextArtworkTitle;
-    @Column(name = "previous_artwork_id")
     private int previousArtworkId;
-    @Column(name = "previous_artwork_title")
     private String previousArtworkTitle;
 
     public int getArtworkId() {
@@ -226,12 +202,12 @@ public class Artwork {
         this.seriesId = seriesId;
     }
 
-    public int getOrder() {
-        return order;
+    public int getSeriesOrder() {
+        return seriesOrder;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setSeriesOrder(int order) {
+        this.seriesOrder = order;
     }
 
     public int getNextArtworkId() {
@@ -289,7 +265,7 @@ public class Artwork {
                 ", updateTime=" + updateTime +
                 ", patchTime=" + patchTime +
                 ", seriesId=" + seriesId +
-                ", order=" + order +
+                ", order=" + seriesOrder +
                 ", nextArtworkId=" + nextArtworkId +
                 ", nextArtworkTitle='" + nextArtworkTitle + '\'' +
                 ", previousArtworkId=" + previousArtworkId +

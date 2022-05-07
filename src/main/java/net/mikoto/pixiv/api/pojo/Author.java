@@ -17,17 +17,11 @@ public class Author {
     @Id
     @Column(name = "pk_author_id", nullable = false, unique = true)
     private int authorId;
-    @Column(name = "author_name", nullable = false)
     private String authorName;
-    @Column(name = "author_url", nullable = false)
     private String authorUrl;
-    @Column(name = "author_url_big", nullable = false)
     private String authorUrlBig;
-    @Column(name = "premium", nullable = false)
     private boolean premium;
-    @Column(name = "background")
     private String background;
-    @Column(name = "patch_time", nullable = false)
     private Date patchTime;
 
     public int getAuthorId() {
