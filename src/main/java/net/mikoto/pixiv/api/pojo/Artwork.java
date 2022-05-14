@@ -19,6 +19,7 @@ public class Artwork {
     private int artworkId;
     private String artworkTitle;
     private int authorId;
+    private int authorName;
     private boolean hasSeries;
     private String description;
     private String illustUrlSmall;
