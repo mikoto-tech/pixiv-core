@@ -19,7 +19,7 @@ public class Artwork {
     private int artworkId;
     private String artworkTitle;
     private int authorId;
-    private int authorName;
+    private String authorName;
     private boolean hasSeries;
     private String description;
     private String illustUrlSmall;
@@ -241,6 +241,14 @@ public class Artwork {
 
     public void setPreviousArtworkTitle(String previousArtworkTitle) {
         this.previousArtworkTitle = previousArtworkTitle;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     @Override
