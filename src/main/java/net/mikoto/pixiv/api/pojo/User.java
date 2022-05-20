@@ -1,25 +1,34 @@
 package net.mikoto.pixiv.api.pojo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+import java.util.Objects;
+
 /**
  * @author mikoto
  * @date 2022/2/1 19:22
  */
+@Entity
+@Table(name = "user")
 public class User {
-    private int id;
+    @Id
+    @Column(name = "pk_user_id", nullable = false, unique = true)
+    private int userId;
     private String userName;
     private String userPassword;
     private String userSalt;
-    private String userKey;
-    private String profileUrl;
-    private String createTime;
-    private String updateTime;
+    private Date createTime;
+    private Date updateTime;
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -46,35 +55,48 @@ public class User {
         this.userSalt = userSalt;
     }
 
-    public String getUserKey() {
-        return userKey;
-    }
-
-    public void setUserKey(String userKey) {
-        this.userKey = userKey;
-    }
-
-    public String getProfileUrl() {
-        return profileUrl;
-    }
-
-    public void setProfileUrl(String profileUrl) {
-        this.profileUrl = profileUrl;
-    }
-
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nUser{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userSalt='" + userSalt + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return userId == user.userId && userName.equals(user.userName) && userPassword.equals(user.userPassword) && userSalt.equals(user.userSalt) && createTime.equals(user.createTime) && updateTime.equals(user.updateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, userName, userPassword, userSalt, createTime, updateTime);
     }
 }
