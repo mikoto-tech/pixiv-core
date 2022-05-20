@@ -1,6 +1,6 @@
 package net.mikoto.pixiv.api.connector;
 
-import net.mikoto.pixiv.api.pojo.Artwork;
+import net.mikoto.pixiv.api.model.Artwork;
 
 /**
  * @author mikoto

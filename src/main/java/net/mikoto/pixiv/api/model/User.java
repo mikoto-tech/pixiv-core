@@ -1,4 +1,4 @@
-package net.mikoto.pixiv.api.pojo;
+package net.mikoto.pixiv.api.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

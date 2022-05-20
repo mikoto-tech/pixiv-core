@@ -1,4 +1,4 @@
-package net.mikoto.pixiv.api.pojo;
+package net.mikoto.pixiv.api.model;
 
 import java.util.Objects;
 
