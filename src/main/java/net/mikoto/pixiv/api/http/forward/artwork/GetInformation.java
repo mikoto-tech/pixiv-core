@@ -3,7 +3,6 @@ package net.mikoto.pixiv.api.http.forward.artwork;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.api.annotation.HttpApiPackage;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -18,15 +17,13 @@ public interface GetInformation {
     /**
      * Get information
      *
-     * @param request   A http servlet request object.
      * @param response  A http servlet response object.
      * @param key       The key of Pixiv-Forward.
      * @param artworkId The id of the artwork.
      * @return Result.
      * @throws Exception exceptions.
      */
-    JSONObject getInformationHttpApi(HttpServletRequest request,
-                                     HttpServletResponse response,
+    JSONObject getInformationHttpApi(HttpServletResponse response,
                                      String key,
                                      int artworkId) throws Exception;
 }
