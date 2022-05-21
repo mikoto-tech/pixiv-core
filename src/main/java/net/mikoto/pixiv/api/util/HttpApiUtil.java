@@ -1,82 +1,48 @@
 package net.mikoto.pixiv.api.util;
 
-import net.mikoto.pixiv.api.annotation.HttpApi;
-import net.mikoto.pixiv.api.annotation.HttpApiParameter;
-import net.mikoto.pixiv.api.annotation.HttpApiParentNode;
-import net.mikoto.pixiv.api.annotation.HttpApiPath;
+import net.mikoto.pixiv.api.annotation.HttpApiPackage;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Locale;
 
 /**
  * @author mikoto
  * @date 2022/3/12 3:04
  */
 public class HttpApiUtil {
-    public static @NotNull String getHttpApi(@NotNull Class<?> path, String... values) throws NoSuchMethodException {
-        Method api = null;
-        for (Method method :
-                path.getMethods()) {
-            for (Annotation annotation :
-                    method.getAnnotations()) {
-                if (annotation instanceof HttpApi) {
-                    api = method;
-                    break;
+    public static @Nullable String getHttpApi(Class<?> httpApi, String... params) {
+        String httpApiPath = getHttpApiPath(httpApi);
+        if (httpApiPath != null) {
+            StringBuilder httpApiBuilder = new StringBuilder();
+            if (params.length > 0) {
+                httpApiBuilder.append("?");
+                for (String param :
+                        params) {
+                    httpApiBuilder.append(param);
                 }
             }
+            return httpApiBuilder.toString();
+        } else {
+            return null;
         }
-        StringBuilder url = new StringBuilder(getHttpApiPath(path));
-        if (values.length > 0) {
-            url.append("?");
-
-            int parameterCount = 0;
-            for (int i = 0; i < api.getParameters().length; i++) {
-                for (Annotation annotation :
-                        api.getParameters()[i].getAnnotations()) {
-                    if (annotation instanceof HttpApiParameter) {
-                        url
-                                .append(((HttpApiParameter) annotation).value())
-                                .append("=")
-                                .append(values[parameterCount]);
-                        parameterCount += 1;
-                    }
-                }
-                if (i != api.getParameters().length - 1) {
-                    url.append("&");
-                }
-            }
-        }
-        return url.toString();
     }
 
-    public static @NotNull String getHttpApiPath(Class<?> path) {
-        StringBuilder url = new StringBuilder();
-
-        // Traverse the parent node from the incoming node
-        Class<?> parentNode = path;
-        ArrayList<String> pathArrayList = new ArrayList<>();
-        boolean flag = true;
-        while (flag) {
-            flag = false;
-            for (Annotation annotation :
-                    parentNode.getAnnotations()) {
-                if (annotation instanceof HttpApiPath) {
-                    pathArrayList.add(((HttpApiPath) annotation).value());
-                } else if (annotation instanceof HttpApiParentNode) {
-                    parentNode = ((HttpApiParentNode) annotation).value();
-                    flag = true;
-                }
-            }
+    public static @Nullable String getHttpApiPath(@NotNull Class<?> httpApi) {
+        for (HttpApiPackage annotation :
+                httpApi.getAnnotationsByType(HttpApiPackage.class)) {
+            return httpApi
+                    .getPackageName()
+                    .toLowerCase(Locale.ROOT)
+                    .replace(
+                            annotation.value().toLowerCase(Locale.ROOT),
+                            ""
+                    )
+                    .replace(
+                            ".",
+                            "/"
+                    );
         }
-        // ArrayList in reverse order and output
-        Collections.reverse(pathArrayList);
-        for (String pathString :
-                pathArrayList) {
-            url.append(pathString);
-        }
-        return url.toString();
+        return null;
     }
 }

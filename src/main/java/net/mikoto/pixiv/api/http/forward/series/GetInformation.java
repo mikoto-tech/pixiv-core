@@ -1,24 +1,19 @@
 package net.mikoto.pixiv.api.http.forward.series;
 
 import com.alibaba.fastjson2.JSONObject;
-import net.mikoto.pixiv.api.annotation.HttpApi;
-import net.mikoto.pixiv.api.annotation.HttpApiParameter;
-import net.mikoto.pixiv.api.annotation.HttpApiParentNode;
-import net.mikoto.pixiv.api.annotation.HttpApiPath;
-import net.mikoto.pixiv.api.http.forward.Series;
-import org.springframework.web.bind.annotation.RequestParam;
+import net.mikoto.pixiv.api.annotation.HttpApiPackage;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static net.mikoto.pixiv.api.http.HttpApi.FORWARD_SERIES_GET_INFORMATION;
-
 /**
  * @author mikoto
- * @date 2022/5/1 14:11
+ * @date 2022/3/12 21:23
  */
-@HttpApiPath(FORWARD_SERIES_GET_INFORMATION)
-@HttpApiParentNode(Series.class)
+@HttpApiPackage("net.mikoto.pixiv.api.http.forward")
 public interface GetInformation {
+    String PARAM_KEY = "key=";
+    String PARAM_SERIES_ID = "seriesId=";
+
     /**
      * Get information
      *
@@ -28,8 +23,7 @@ public interface GetInformation {
      * @return Result.
      * @throws Exception exceptions.
      */
-    @HttpApi
     JSONObject getInformationHttpApi(HttpServletResponse response,
-                                     @RequestParam @HttpApiParameter("key") String key,
-                                     @RequestParam @HttpApiParameter("seriesId") int seriesId) throws Exception;
+                                     String key,
+                                     int seriesId) throws Exception;
 }

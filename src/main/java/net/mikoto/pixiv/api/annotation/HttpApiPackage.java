@@ -7,9 +7,10 @@ import java.lang.annotation.Target;
 
 /**
  * @author mikoto
- * @date 2022/3/12 21:51
+ * @date 2022/5/21 15:19
  */
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface HttpApi {
+public @interface HttpApiPackage {
+    String value();
 }

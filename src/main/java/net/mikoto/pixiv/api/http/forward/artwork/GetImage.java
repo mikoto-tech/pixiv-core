@@ -1,23 +1,18 @@
 package net.mikoto.pixiv.api.http.forward.artwork;
 
-import net.mikoto.pixiv.api.annotation.HttpApi;
-import net.mikoto.pixiv.api.annotation.HttpApiParameter;
-import net.mikoto.pixiv.api.annotation.HttpApiParentNode;
-import net.mikoto.pixiv.api.annotation.HttpApiPath;
-import net.mikoto.pixiv.api.http.forward.Artwork;
-import org.springframework.web.bind.annotation.RequestParam;
+import net.mikoto.pixiv.api.annotation.HttpApiPackage;
 
 import javax.servlet.http.HttpServletResponse;
-
-import static net.mikoto.pixiv.api.http.HttpApi.FORWARD_ARTWORK_GET_IMAGE;
 
 /**
  * @author mikoto
  * @date 2022/3/12 21:19
  */
-@HttpApiPath(FORWARD_ARTWORK_GET_IMAGE)
-@HttpApiParentNode(Artwork.class)
+@HttpApiPackage("net.mikoto.pixiv.api.http.forward")
 public interface GetImage {
+    String PARAM_KEY = "key=";
+    String PARAM_URL = "url=";
+
     /**
      * Get image.
      *
@@ -27,8 +22,7 @@ public interface GetImage {
      * @return The data of the image.
      * @throws Exception exceptions.
      */
-    @HttpApi
     byte[] getImageHttpApi(HttpServletResponse response,
-                           @RequestParam @HttpApiParameter("key") String key,
-                           @RequestParam @HttpApiParameter("url") String url) throws Exception;
+                           String key,
+                           String url) throws Exception;
 }

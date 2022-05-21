@@ -1,35 +1,32 @@
 package net.mikoto.pixiv.api.http.forward.artwork;
 
 import com.alibaba.fastjson2.JSONObject;
-import net.mikoto.pixiv.api.annotation.HttpApi;
-import net.mikoto.pixiv.api.annotation.HttpApiParameter;
-import net.mikoto.pixiv.api.annotation.HttpApiParentNode;
-import net.mikoto.pixiv.api.annotation.HttpApiPath;
-import net.mikoto.pixiv.api.http.forward.Artwork;
-import org.springframework.web.bind.annotation.RequestParam;
+import net.mikoto.pixiv.api.annotation.HttpApiPackage;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import static net.mikoto.pixiv.api.http.HttpApi.FORWARD_ARTWORK_GET_INFORMATION;
 
 /**
  * @author mikoto
  * @date 2022/3/12 21:23
  */
-@HttpApiPath(FORWARD_ARTWORK_GET_INFORMATION)
-@HttpApiParentNode(Artwork.class)
+@HttpApiPackage("net.mikoto.pixiv.api.http.forward")
 public interface GetInformation {
+    String PARAM_KEY = "key=";
+    String PARAM_ARTWORK_ID = "artworkId=";
+
     /**
      * Get information
      *
+     * @param request   A http servlet request object.
      * @param response  A http servlet response object.
      * @param key       The key of Pixiv-Forward.
      * @param artworkId The id of the artwork.
      * @return Result.
      * @throws Exception exceptions.
      */
-    @HttpApi
-    JSONObject getInformationHttpApi(HttpServletResponse response,
-                                     @RequestParam @HttpApiParameter("key") String key,
-                                     @RequestParam @HttpApiParameter("artworkId") int artworkId) throws Exception;
+    JSONObject getInformationHttpApi(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     String key,
+                                     int artworkId) throws Exception;
 }
