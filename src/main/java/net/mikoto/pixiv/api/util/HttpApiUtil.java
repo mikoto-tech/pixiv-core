@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
+import java.util.StringJoiner;
 
 /**
  * @author mikoto
@@ -14,15 +15,15 @@ public class HttpApiUtil {
     public static @Nullable String getHttpApi(Class<?> httpApi, String... params) {
         String httpApiPath = getHttpApiPath(httpApi);
         if (httpApiPath != null) {
-            StringBuilder httpApiBuilder = new StringBuilder();
+            StringJoiner httpApiJoiner = new StringJoiner("&");
             if (params.length > 0) {
-                httpApiBuilder.append("?");
                 for (String param :
                         params) {
-                    httpApiBuilder.append(param);
+                    httpApiJoiner.add(param);
                 }
+                return httpApiPath + "?" + httpApiJoiner;
             }
-            return httpApiBuilder.toString();
+            return httpApiPath;
         } else {
             return null;
         }
@@ -31,6 +32,8 @@ public class HttpApiUtil {
     public static @Nullable String getHttpApiPath(@NotNull Class<?> httpApi) {
         for (HttpApiPackage annotation :
                 httpApi.getAnnotationsByType(HttpApiPackage.class)) {
+            char[] httpApiNameChars = httpApi.getSimpleName().toCharArray();
+            httpApiNameChars[0] += 32;
             return httpApi
                     .getPackageName()
                     .toLowerCase(Locale.ROOT)
@@ -41,7 +44,7 @@ public class HttpApiUtil {
                     .replace(
                             ".",
                             "/"
-                    );
+                    ) + "/" + String.valueOf(httpApiNameChars);
         }
         return null;
     }

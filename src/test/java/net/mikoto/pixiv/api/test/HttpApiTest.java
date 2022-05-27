@@ -1,5 +1,7 @@
 package net.mikoto.pixiv.api.test;
 
+import net.mikoto.pixiv.api.http.forward.artwork.GetInformation;
+import net.mikoto.pixiv.api.util.HttpApiUtil;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
  */
 public class HttpApiTest {
     @Test
-    public void httpApiTest() throws NoSuchMethodException {
+    public void httpApiTest() {
+        System.out.println(HttpApiUtil.getHttpApi(GetInformation.class, "123456", "qweasd"));
     }
 }
