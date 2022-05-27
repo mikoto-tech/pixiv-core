@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'net.mikoto.pixiv'
-version = '1.4.2-snapshot-3'
+version = '1.4.2-snapshot-4'
 sourceCompatibility = '17'
 
 repositories {
