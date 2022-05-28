@@ -13,5 +13,5 @@ public interface InsertArtworks {
      *
      * @param data The data.
      */
-    void insertArtworks(String data);
+    void insertArtworksHttpApi(String data);
 }

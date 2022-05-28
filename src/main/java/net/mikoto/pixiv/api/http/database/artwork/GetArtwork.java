@@ -20,5 +20,5 @@ public interface GetArtwork {
      * @param artworkId The artwork id.
      * @return The artwork object.
      */
-    JSONObject getInformationHttpApi(HttpServletResponse response, int artworkId);
+    JSONObject getArtworkHttpApi(HttpServletResponse response, int artworkId);
 }

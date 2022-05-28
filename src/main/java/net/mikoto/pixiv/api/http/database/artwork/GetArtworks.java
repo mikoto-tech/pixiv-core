@@ -22,5 +22,5 @@ public interface GetArtworks {
      * @param pageCount  The pageCount.
      * @return The artworks.
      */
-    JSONObject getArtworks(HttpServletResponse response, String credential, Sort.Direction order, String properties, int pageCount);
+    JSONObject getArtworksHttpApi(HttpServletResponse response, String credential, Sort.Direction order, String properties, int pageCount);
 }
