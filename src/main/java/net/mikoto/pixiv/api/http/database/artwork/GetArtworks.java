@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @HttpApiPackage("net.mikoto.pixiv.api.http.database")
 public interface GetArtworks {
-    String PARAM_CREDENTIAL = "credential";
-    String PARAM_ORDER = "order";
-    String PARAM_PROPERTIES = "properties";
-    String PARAM_PAGE_COUNT = "pageCount";
+    String PARAM_CREDENTIAL = "credential=";
+    String PARAM_ORDER = "order=";
+    String PARAM_PROPERTIES = "properties=";
+    String PARAM_PAGE_COUNT = "pageCount=";
 
     /**
      * Get artworks.
