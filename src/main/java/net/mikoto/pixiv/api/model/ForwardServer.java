@@ -11,7 +11,6 @@ public class ForwardServer {
     private final int weight;
     private int currentWeight = 0;
     private String key;
-    private String publicKey;
 
     public ForwardServer(String address, int weight) {
         this.address = address;
@@ -48,14 +47,6 @@ public class ForwardServer {
         this.key = key;
     }
 
-    public String getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -79,7 +70,6 @@ public class ForwardServer {
                 ", weight=" + weight +
                 ", currentWeight=" + currentWeight +
                 ", key='" + key + '\'' +
-                ", publicKey='" + publicKey + '\'' +
                 '}';
     }
 }
