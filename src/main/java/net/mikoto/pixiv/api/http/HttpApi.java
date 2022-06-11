@@ -14,6 +14,7 @@ public class HttpApi {
 
     public static final String FORWARD_AUTHOR = "/author";
     public static final String FORWARD_AUTHOR_GET_INFORMATION = "/getInformation";
+    public static final String FORWARD_AUTHOR_GET_PROFILE = "/getProfile";
 
 
     public static final String DATABASE_ARTWORK = "/artwork";
