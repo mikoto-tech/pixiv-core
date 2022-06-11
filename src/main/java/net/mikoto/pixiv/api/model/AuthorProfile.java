@@ -8,8 +8,8 @@ import java.util.Arrays;
  */
 public class AuthorProfile {
     Integer[] artworks;
-    Series[] series;
-    Artwork[] pickUpArtworks;
+    PickupSeries[] series;
+    PickupArtwork[] pickUpArtworks;
 
     public Integer[] getArtworks() {
         return artworks;
@@ -19,19 +19,19 @@ public class AuthorProfile {
         this.artworks = artworks;
     }
 
-    public Series[] getSeries() {
+    public PickupSeries[] getSeries() {
         return series;
     }
 
-    public void setSeries(Series[] series) {
+    public void setSeries(PickupSeries[] series) {
         this.series = series;
     }
 
-    public Artwork[] getPickUpArtworks() {
+    public PickupArtwork[] getPickUpArtworks() {
         return pickUpArtworks;
     }
 
-    public void setPickUpArtworks(Artwork[] pickUpArtworks) {
+    public void setPickUpArtworks(PickupArtwork[] pickUpArtworks) {
         this.pickUpArtworks = pickUpArtworks;
     }
 
