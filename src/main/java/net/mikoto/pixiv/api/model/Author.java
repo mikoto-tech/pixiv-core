@@ -19,7 +19,6 @@ public class Author {
     private int authorId;
     private String authorName;
     private String authorUrl;
-    private String authorUrlBig;
     private boolean premium;
     private String background;
     private Date patchTime;
@@ -46,14 +45,6 @@ public class Author {
 
     public void setAuthorUrl(String authorUrl) {
         this.authorUrl = authorUrl;
-    }
-
-    public String getAuthorUrlBig() {
-        return authorUrlBig;
-    }
-
-    public void setAuthorUrlBig(String authorUrlBig) {
-        this.authorUrlBig = authorUrlBig;
     }
 
     public boolean isPremium() {
@@ -89,12 +80,12 @@ public class Author {
             return false;
         }
         Author author = (Author) o;
-        return authorId == author.authorId && premium == author.premium && authorName.equals(author.authorName) && authorUrl.equals(author.authorUrl) && authorUrlBig.equals(author.authorUrlBig) && Objects.equals(background, author.background) && patchTime.equals(author.patchTime);
+        return authorId == author.authorId && premium == author.premium && authorName.equals(author.authorName) && authorUrl.equals(author.authorUrl) && Objects.equals(background, author.background) && patchTime.equals(author.patchTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorId, authorName, authorUrl, authorUrlBig, premium, background, patchTime);
+        return Objects.hash(authorId, authorName, authorUrl, premium, background, patchTime);
     }
 
     @Override
@@ -103,7 +94,6 @@ public class Author {
                 "authorId=" + authorId +
                 ", authorName='" + authorName + '\'' +
                 ", authorUrl='" + authorUrl + '\'' +
-                ", authorUrlBig='" + authorUrlBig + '\'' +
                 ", premium=" + premium +
                 ", background='" + background + '\'' +
                 ", patchTime=" + patchTime +

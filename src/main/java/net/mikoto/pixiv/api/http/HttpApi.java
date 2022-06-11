@@ -12,6 +12,9 @@ public class HttpApi {
     public static final String FORWARD_SERIES = "/series";
     public static final String FORWARD_SERIES_GET_INFORMATION = "/getInformation";
 
+    public static final String FORWARD_AUTHOR = "/author";
+    public static final String FORWARD_AUTHOR_GET_INFORMATION = "/getInformation";
+
 
     public static final String DATABASE_ARTWORK = "/artwork";
     public static final String DATABASE_ARTWORK_INSERT_ARTWORKS = "/insertArtworks";

@@ -12,6 +12,12 @@ public class ForwardServer {
     private int currentWeight = 0;
     private String key;
 
+    public ForwardServer(String address, int weight, String key) {
+        this.address = address;
+        this.weight = weight;
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nForwardServer{" +

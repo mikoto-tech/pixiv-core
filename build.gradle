@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compileOnly 'com.alibaba.fastjson2:fastjson2:2.0.5'
+    compileOnly 'com.alibaba.fastjson2:fastjson2:2.0.6'
     compileOnly 'org.jetbrains:annotations:23.0.0'
     compileOnly 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
