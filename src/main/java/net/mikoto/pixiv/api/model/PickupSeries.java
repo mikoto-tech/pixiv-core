@@ -55,8 +55,12 @@ public class PickupSeries {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PickupSeries that = (PickupSeries) o;
         return seriesId == that.seriesId && firstArtworkId == that.firstArtworkId && latestArtworkId == that.latestArtworkId && Objects.equals(seriesTitle, that.seriesTitle) && Objects.equals(url, that.url);
     }

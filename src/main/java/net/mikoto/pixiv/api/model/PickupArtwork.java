@@ -46,8 +46,12 @@ public class PickupArtwork {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PickupArtwork that = (PickupArtwork) o;
         return artworkId == that.artworkId && artworkTitle.equals(that.artworkTitle) && url.equals(that.url) && alt.equals(that.alt);
     }

@@ -6,9 +6,9 @@ import java.util.Objects;
  * @author mikoto
  * @date 2022/3/27 3:42
  */
-public class ForwardServer {
+public class ForwardServer implements CurrentWeighted {
     private String address;
-    private int weight;
+    private final int weight;
     private int currentWeight = 0;
     private String key;
 
@@ -55,10 +55,6 @@ public class ForwardServer {
 
     public int getWeight() {
         return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     public int getCurrentWeight() {
