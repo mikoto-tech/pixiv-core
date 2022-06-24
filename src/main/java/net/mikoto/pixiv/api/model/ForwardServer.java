@@ -6,7 +6,7 @@ import java.util.Objects;
  * @author mikoto
  * @date 2022/3/27 3:42
  */
-public class ForwardServer implements CurrentWeighted {
+public class ForwardServer implements CurrentWeighted, HttpServer {
     private String address;
     private final int weight;
     private int currentWeight = 0;

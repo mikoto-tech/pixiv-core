@@ -1,4 +1,4 @@
-package net.mikoto.pixiv.api.patcher.connector;
+package net.mikoto.pixiv.api.source;
 
 import net.mikoto.pixiv.api.model.CurrentWeighted;
 
@@ -10,7 +10,7 @@ import java.util.Set;
  * @author mikoto
  * @date 2022/6/12 3:47
  */
-public class SmoothWeightedConnector<S extends CurrentWeighted> implements Connector<S> {
+public class SmoothWeightedSource<S extends CurrentWeighted> implements Source<S> {
     private final Set<S> SOURCE_SET = new HashSet<>();
 
     /**

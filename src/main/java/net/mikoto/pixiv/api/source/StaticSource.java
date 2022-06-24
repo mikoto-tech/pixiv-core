@@ -1,10 +1,10 @@
-package net.mikoto.pixiv.api.patcher.connector;
+package net.mikoto.pixiv.api.source;
 
 /**
  * @author mikoto
  * @date 2022/6/18 17:11
  */
-public class StaticConnector<S> implements Connector<S> {
+public class StaticSource<S> implements Source<S> {
     private S source;
 
     /**

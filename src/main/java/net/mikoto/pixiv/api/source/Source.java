@@ -1,10 +1,10 @@
-package net.mikoto.pixiv.api.patcher.connector;
+package net.mikoto.pixiv.api.source;
 
 /**
  * @author mikoto
  * @date 2022/6/18 17:00
  */
-public interface Connector<S> {
+public interface Source<S> {
     /**
      * Add a server.
      *
