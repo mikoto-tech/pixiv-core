@@ -16,9 +16,9 @@ public interface PixivForwardClient {
      * @param address   The address.
      * @param key       The key.
      * @param artworkId The artwork.
-     * @return
+     * @return Artwork.
      */
-    @Request(FORWARD_ARTWORK + FORWARD_ARTWORK_GET_INFORMATION + "/?key={key}&artworkId={artworkId}")
+    @Request(FORWARD_ARTWORK + FORWARD_ARTWORK_GET_INFORMATION + "?key={key}&artworkId={artworkId}")
     @Address(
             host = "{address}"
     )
@@ -30,8 +30,8 @@ public interface PixivForwardClient {
      * @param address The address.
      * @param key     The key.
      * @param url     The url.
-     * @return The result.
+     * @return Image.
      */
-    @Request(FORWARD_ARTWORK + FORWARD_ARTWORK_GET_IMAGE + "/?key={key}&url={url}")
+    @Request(FORWARD_ARTWORK + FORWARD_ARTWORK_GET_IMAGE + "?key={key}&url={url}")
     byte[] getImage(String address, String key, String url);
 }
