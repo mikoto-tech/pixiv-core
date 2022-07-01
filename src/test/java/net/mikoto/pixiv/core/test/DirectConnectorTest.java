@@ -1,11 +1,13 @@
 package net.mikoto.pixiv.core.test;
 
+import com.dtflys.forest.springboot.annotation.ForestScan;
 import net.mikoto.pixiv.core.connector.DirectConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.text.ParseException;
 
@@ -15,7 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author mikoto
  * @date 2022/7/1 23:17
  */
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ComponentScan("net.mikoto.pixiv.core.connector")
+@ForestScan("net.mikoto.pixiv.core.connector")
 @SpringBootApplication
 public class DirectConnectorTest {
     @Autowired

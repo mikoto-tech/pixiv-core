@@ -14,6 +14,7 @@ public interface DirectConnector {
      *
      * @param artworkId The artwork id.
      * @return The artwork.
+     * @throws ParseException Throw this exception when time cannot parse.
      */
     Artwork getArtwork(int artworkId) throws ParseException;
 

@@ -16,7 +16,7 @@ import java.util.StringJoiner;
  * @author mikoto
  * @date 2022/6/25 1:22
  */
-@SuppressWarnings("AlibabaMethodTooLong")
+@SuppressWarnings({"AlibabaMethodTooLong", "AlibabaUndefineMagicConstant"})
 @Component("pixivDirectConnector")
 public class DirectConnectorImpl implements DirectConnector {
     /**
