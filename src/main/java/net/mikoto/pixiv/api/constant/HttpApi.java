@@ -1,8 +1,8 @@
-package net.mikoto.pixiv.api.http;
+package net.mikoto.pixiv.api.constant;
 
 /**
  * @author mikoto
- * @date 2022/3/12 22:43
+ * @date 2022/7/1 15:49
  */
 public class HttpApi {
     public static final String FORWARD_ARTWORK = "/artwork";
