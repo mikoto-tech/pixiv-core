@@ -1,5 +1,6 @@
-package net.mikoto.pixiv.core.connector;
+package net.mikoto.pixiv.core.connector.impl;
 
+import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.springframework.data.domain.Sort;
 
@@ -8,9 +9,9 @@ import java.util.Set;
 
 /**
  * @author mikoto
- * @date 2022/7/2 17:42
+ * @date 2022/7/3 1:53
  */
-public interface DatabaseConnector extends Connector {
+public class DatabaseConnectorImpl implements DatabaseConnector {
     /**
      * Get an artwork from database.
      * Each page can provide 12 artworks.
@@ -21,7 +22,10 @@ public interface DatabaseConnector extends Connector {
      * @param pageCount  The page of the artworks.
      * @return The artwork objects list.
      */
-    List<Artwork> getArtworks(String credential, Sort.Order order, String properties, int pageCount);
+    @Override
+    public List<Artwork> getArtworks(String credential, Sort.Order order, String properties, int pageCount) {
+        return null;
+    }
 
     /**
      * Get an artwork by id.
@@ -29,7 +33,10 @@ public interface DatabaseConnector extends Connector {
      * @param artworkId The artwork id.
      * @return The artwork object.
      */
-    Artwork getArtwork(int artworkId);
+    @Override
+    public Artwork getArtwork(int artworkId) {
+        return null;
+    }
 
     /**
      * Insert artworks.
@@ -37,5 +44,8 @@ public interface DatabaseConnector extends Connector {
      * @param token    The token of you.
      * @param artworks The set of artworks.
      */
-    void insertArtworks(String token, Set<Artwork> artworks);
+    @Override
+    public void insertArtworks(String token, Set<Artwork> artworks) {
+
+    }
 }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface PixivDirectClient {
-
     /**
      * Get the artwork(raw) from pixiv.
      *
@@ -19,11 +18,7 @@ public interface PixivDirectClient {
      * @return Result.
      */
     @Get(
-            url = "/ajax/illust/{artworkId}"
-    )
-    @Address(
-            scheme = "https",
-            host = "www.pixiv.net"
+            url = "https://www.pixiv.net/ajax/illust/{artworkId}"
     )
     String getArtwork(@Var("artworkId") int artworkId);
 
@@ -34,10 +29,7 @@ public interface PixivDirectClient {
      * @return Result.
      */
     @Get(
-            url = "{url}",
-            headers = {
-                    "Referer: https://www.pixiv.net"
-            }
+            url = "https://i.pximg.net{url}"
     )
     @Address(
             scheme = "https",

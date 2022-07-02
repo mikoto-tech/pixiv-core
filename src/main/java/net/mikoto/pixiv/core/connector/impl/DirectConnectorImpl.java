@@ -1,6 +1,7 @@
-package net.mikoto.pixiv.core.connector;
+package net.mikoto.pixiv.core.connector.impl;
 
 import com.alibaba.fastjson2.JSONObject;
+import net.mikoto.pixiv.core.connector.DirectConnector;
 import net.mikoto.pixiv.core.connector.client.PixivDirectClient;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class DirectConnectorImpl implements DirectConnector {
      *
      * @param artworkId The artwork id.
      * @return The artwork.
+     * @throws ParseException Throw this exception when time cannot parse.
      */
     @Override
     public Artwork getArtwork(int artworkId) throws ParseException {
@@ -150,20 +152,5 @@ public class DirectConnectorImpl implements DirectConnector {
     @Override
     public byte[] getImage(String url) {
         return pixivDirectClient.getImage(url);
-    }
-
-    /**
-     * Get an artwork by id.
-     *
-     * @param artworkId The artworkId
-     * @return An artwork object.
-     */
-    @Override
-    public Artwork getArtworkById(int artworkId) {
-        try {
-            return getArtwork(artworkId);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
