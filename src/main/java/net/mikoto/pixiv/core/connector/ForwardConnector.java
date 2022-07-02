@@ -1,12 +1,14 @@
 package net.mikoto.pixiv.core.connector;
 
 import net.mikoto.pixiv.core.model.Artwork;
+import net.mikoto.pixiv.core.model.ForwardServer;
+import net.mikoto.pixiv.core.source.Source;
 
 /**
  * @author mikoto
  * @date 2022/7/2 17:42
  */
-public interface ForwardConnector extends Connector {
+public interface ForwardConnector extends Connector, Source<ForwardServer> {
     /**
      * Get the artwork by id.
      *

@@ -2,6 +2,8 @@ package net.mikoto.pixiv.core.connector.impl;
 
 import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
+import net.mikoto.pixiv.core.model.DirectServer;
+import net.mikoto.pixiv.core.source.StaticSource;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.Set;
  * @author mikoto
  * @date 2022/7/3 1:53
  */
-public class DatabaseConnectorImpl implements DatabaseConnector {
+public class DatabaseConnectorImpl extends StaticSource<DirectServer> implements DatabaseConnector {
     /**
      * Get an artwork from database.
      * Each page can provide 12 artworks.
