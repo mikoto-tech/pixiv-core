@@ -73,6 +73,7 @@ public class ConnectorTest {
         assertEquals("初音ミク;足裏;足指;女の子;つま先;裸足;ギリシャ型;美脚;縞パン;VOCALOID10000users入り", artwork.getTags());
     }
 
+    @Test
     void imageTest() {
         byte[] directImage = directConnector.getImage("/c/48x48/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg");
         byte[] forwardImage = forwardConnector.getImage("/c/48x48/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg");
