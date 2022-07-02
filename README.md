@@ -1,11 +1,7 @@
-# Mikoto-Pixiv-Api
+# Mikoto-Pixiv-Core
 
-[![wakatime](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/441b2690-e980-4653-8154-57e3fe5f4b40.svg)](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/441b2690-e980-4653-8154-57e3fe5f4b40)
-
-`Mikoto-Pixiv-Api` 是为了
-
-1. 声明HTTP-API
-2. 声明通用的pojo类
+[![wakatime](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/af7838fd-d70b-4eea-a108-a2fff9cf5f17.svg)](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/af7838fd-d70b-4eea-a108-a2fff9cf5f17)
+[![Java CI](https://github.com/mikoto-tech/pixiv-core/actions/workflows/ci.yaml/badge.svg)](https://github.com/mikoto-tech/pixiv-core/actions/workflows/ci.yaml)
 
 ## 声明
 

@@ -151,4 +151,19 @@ public class DirectConnectorImpl implements DirectConnector {
     public byte[] getImage(String url) {
         return pixivDirectClient.getImage(url);
     }
+
+    /**
+     * Get an artwork by id.
+     *
+     * @param artworkId The artworkId
+     * @return An artwork object.
+     */
+    @Override
+    public Artwork getArtworkById(int artworkId) {
+        try {
+            return getArtwork(artworkId);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
