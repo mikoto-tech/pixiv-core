@@ -28,7 +28,10 @@ public interface DirectClient {
      * @return Result.
      */
     @Get(
-            url = "https://i.pximg.net{url}"
+            url = "https://i.pximg.net{url}",
+            headers = {
+                    "Referer: https://www.pixiv.net"
+            }
     )
     byte[] getImage(@Var("url") String url);
 }

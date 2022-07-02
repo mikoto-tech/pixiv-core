@@ -78,6 +78,10 @@ public class ConnectorTest {
         byte[] directImage = directConnector.getImage("/c/48x48/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg");
         byte[] forwardImage = forwardConnector.getImage("/c/48x48/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg");
 
-        assertEquals(directImage, forwardImage);
+        assertEquals(directImage[0], forwardImage[0]);
+        assertEquals(directImage[1], forwardImage[1]);
+        assertEquals(directImage[2], forwardImage[2]);
+        assertEquals(directImage[3], forwardImage[3]);
+        assertEquals(directImage[4], forwardImage[4]);
     }
 }
