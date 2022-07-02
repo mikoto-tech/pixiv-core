@@ -5,6 +5,7 @@ import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.JSONBody;
 import com.dtflys.forest.annotation.Post;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 import static net.mikoto.pixiv.core.constant.HttpApi.*;
 
@@ -12,6 +13,7 @@ import static net.mikoto.pixiv.core.constant.HttpApi.*;
  * @author mikoto
  * @date 2022/7/1 17:40
  */
+@Component
 public interface DatabaseClient {
     /**
      * Insert artworks to pixiv database.

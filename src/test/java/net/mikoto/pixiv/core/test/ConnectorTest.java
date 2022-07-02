@@ -2,6 +2,7 @@ package net.mikoto.pixiv.core.test;
 
 import com.dtflys.forest.springboot.annotation.ForestScan;
 import net.mikoto.pixiv.core.connector.DirectConnector;
+import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ComponentScan("net.mikoto.pixiv.core.client")
 @ForestScan("net.mikoto.pixiv.core.connector")
 @SpringBootApplication
-public class DirectConnectorTest {
+public class ConnectorTest {
     DirectConnector directConnector;
+    ForwardConnector forwardConnector;
 
     @Autowired
-    public DirectConnectorTest(DirectConnector directConnector) {
+    public ConnectorTest(DirectConnector directConnector, ForwardConnector forwardConnector) {
         this.directConnector = directConnector;
+        this.forwardConnector = forwardConnector;
     }
 
     @Test

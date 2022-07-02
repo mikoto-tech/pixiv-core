@@ -8,11 +8,13 @@ import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.ForwardServer;
 import net.mikoto.pixiv.core.source.SmoothWeightedSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author mikoto
  * @date 2022/7/3 1:53
  */
+@Component("forwardConnector")
 public class ForwardConnectorImpl extends SmoothWeightedSource<ForwardServer> implements ForwardConnector {
     /**
      * Constants
