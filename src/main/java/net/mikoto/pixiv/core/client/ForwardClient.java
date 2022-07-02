@@ -1,7 +1,8 @@
-package net.mikoto.pixiv.core.connector.client;
+package net.mikoto.pixiv.core.client;
 
 import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.Var;
+import org.springframework.stereotype.Component;
 
 import static net.mikoto.pixiv.core.constant.HttpApi.*;
 
@@ -9,7 +10,8 @@ import static net.mikoto.pixiv.core.constant.HttpApi.*;
  * @author mikoto
  * @date 2022/7/3 1:56
  */
-public interface PixivForwardClient {
+@Component
+public interface ForwardClient {
     /**
      * Get the artwork from forward.
      *

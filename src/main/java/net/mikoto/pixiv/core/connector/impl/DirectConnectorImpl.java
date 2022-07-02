@@ -1,8 +1,8 @@
 package net.mikoto.pixiv.core.connector.impl;
 
 import com.alibaba.fastjson2.JSONObject;
+import net.mikoto.pixiv.core.client.DirectClient;
 import net.mikoto.pixiv.core.connector.DirectConnector;
-import net.mikoto.pixiv.core.connector.client.PixivDirectClient;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +17,6 @@ import java.util.StringJoiner;
  * @author mikoto
  * @date 2022/6/25 1:22
  */
-@SuppressWarnings({"AlibabaMethodTooLong", "AlibabaUndefineMagicConstant"})
 @Component("pixivDirectConnector")
 public class DirectConnectorImpl implements DirectConnector {
     /**
@@ -37,11 +36,11 @@ public class DirectConnectorImpl implements DirectConnector {
      * Instances
      */
     @Qualifier
-    private final PixivDirectClient pixivDirectClient;
+    private final DirectClient directClient;
 
     @Autowired
-    public DirectConnectorImpl(PixivDirectClient pixivDirectClient) {
-        this.pixivDirectClient = pixivDirectClient;
+    public DirectConnectorImpl(DirectClient directClient) {
+        this.directClient = directClient;
     }
 
     /**
@@ -51,11 +50,12 @@ public class DirectConnectorImpl implements DirectConnector {
      * @return The artwork.
      * @throws ParseException Throw this exception when time cannot parse.
      */
+    @SuppressWarnings({"AlibabaMethodTooLong", "AlibabaUndefineMagicConstant"})
     @Override
     public Artwork getArtwork(int artworkId) throws ParseException {
         Artwork artwork = new Artwork();
 
-        JSONObject artworkRawJson = JSONObject.parseObject(pixivDirectClient.getArtwork(artworkId));
+        JSONObject artworkRawJson = JSONObject.parseObject(directClient.getArtwork(artworkId));
         if (!artworkRawJson.getBooleanValue("error")) {
             JSONObject artworkRawJsonBody = artworkRawJson.getJSONObject("body");
 
@@ -151,6 +151,6 @@ public class DirectConnectorImpl implements DirectConnector {
      */
     @Override
     public byte[] getImage(String url) {
-        return pixivDirectClient.getImage(url);
+        return directClient.getImage(url);
     }
 }

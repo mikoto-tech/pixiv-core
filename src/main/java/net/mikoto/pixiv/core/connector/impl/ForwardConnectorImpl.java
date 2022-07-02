@@ -1,15 +1,33 @@
 package net.mikoto.pixiv.core.connector.impl;
 
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
+import net.mikoto.pixiv.core.client.ForwardClient;
 import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.ForwardServer;
 import net.mikoto.pixiv.core.source.SmoothWeightedSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author mikoto
  * @date 2022/7/3 1:53
  */
 public class ForwardConnectorImpl extends SmoothWeightedSource<ForwardServer> implements ForwardConnector {
+    /**
+     * Constants
+     */
+    private static final String SUCCESS_KEY = "success";
+    /**
+     * Instances
+     */
+    private final ForwardClient forwardClient;
+
+    @Autowired
+    public ForwardConnectorImpl(ForwardClient forwardClient) {
+        this.forwardClient = forwardClient;
+    }
+
     /**
      * Get the artwork by id.
      *
@@ -44,7 +62,12 @@ public class ForwardConnectorImpl extends SmoothWeightedSource<ForwardServer> im
      */
     @Override
     public Artwork getArtworkSingleServer(String address, String key, int artworkId) {
-        return null;
+        JSONObject artworkJson = JSON.parseObject(forwardClient.getArtwork(address, key, artworkId));
+        if (artworkJson.getBooleanValue(SUCCESS_KEY)) {
+            return artworkJson.getObject("body", Artwork.class);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -57,6 +80,6 @@ public class ForwardConnectorImpl extends SmoothWeightedSource<ForwardServer> im
      */
     @Override
     public byte[] getImageSingleServer(String address, String key, String url) {
-        return new byte[0];
+        return forwardClient.getImage(address, key, url);
     }
 }

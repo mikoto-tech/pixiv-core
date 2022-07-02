@@ -1,9 +1,9 @@
 package net.mikoto.pixiv.core.client;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.dtflys.forest.annotation.Address;
+import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.JSONBody;
-import com.dtflys.forest.annotation.Request;
+import com.dtflys.forest.annotation.Post;
 import org.springframework.data.domain.Sort;
 
 import static net.mikoto.pixiv.core.constant.HttpApi.*;
@@ -12,8 +12,7 @@ import static net.mikoto.pixiv.core.constant.HttpApi.*;
  * @author mikoto
  * @date 2022/7/1 17:40
  */
-@Address(host = "{address}")
-public interface PixivDatabaseClient {
+public interface DatabaseClient {
     /**
      * Insert artworks to pixiv database.
      *
@@ -21,7 +20,9 @@ public interface PixivDatabaseClient {
      * @param token    The token.
      * @param artworks The artwork.
      */
-    @Request(DATABASE_ARTWORK + DATABASE_ARTWORK_INSERT_ARTWORKS + "?token={token}")
+    @Post(
+            "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_INSERT_ARTWORKS + "?token={token}"
+    )
     void insertArtworks(String address, String token, @JSONBody JSONObject artworks);
 
     /**
@@ -31,7 +32,9 @@ public interface PixivDatabaseClient {
      * @param artworkId The artwork.
      * @return Artwork.
      */
-    @Request(DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORK + "?artworkId={artworkId}")
+    @Get(
+            "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORK + "?artworkId={artworkId}"
+    )
     String getArtwork(String address, String artworkId);
 
     /**
@@ -44,6 +47,8 @@ public interface PixivDatabaseClient {
      * @param pageCount  The page.
      * @return The artworks.
      */
-    @Request(DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORKS + "?credential={credential}&order={order}&properties={properties}&pageCount={pageCount}")
+    @Post(
+            "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORKS + "?credential={credential}&order={order}&properties={properties}&pageCount={pageCount}"
+    )
     String getArtworks(String address, String credential, Sort.Direction order, String properties, int pageCount);
 }

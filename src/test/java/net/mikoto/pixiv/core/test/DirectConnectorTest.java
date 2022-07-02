@@ -19,11 +19,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ComponentScan("net.mikoto.pixiv.core.connector")
+@ComponentScan("net.mikoto.pixiv.core.client")
 @ForestScan("net.mikoto.pixiv.core.connector")
 @SpringBootApplication
 public class DirectConnectorTest {
-    @Autowired
     DirectConnector directConnector;
+
+    @Autowired
+    public DirectConnectorTest(DirectConnector directConnector) {
+        this.directConnector = directConnector;
+    }
 
     @Test
     void directGetArtworkTest() throws ParseException {

@@ -1,6 +1,5 @@
-package net.mikoto.pixiv.core.connector.client;
+package net.mikoto.pixiv.core.client;
 
-import com.dtflys.forest.annotation.Address;
 import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.Var;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/6/25 1:11
  */
 @Component
-public interface PixivDirectClient {
+public interface DirectClient {
     /**
      * Get the artwork(raw) from pixiv.
      *
@@ -30,10 +29,6 @@ public interface PixivDirectClient {
      */
     @Get(
             url = "https://i.pximg.net{url}"
-    )
-    @Address(
-            scheme = "https",
-            host = "i.pximg.net"
     )
     byte[] getImage(@Var("url") String url);
 }
