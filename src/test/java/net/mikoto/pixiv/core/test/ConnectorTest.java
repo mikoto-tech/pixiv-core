@@ -6,6 +6,7 @@ import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,17 +22,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ComponentScan("net.mikoto.pixiv.core.connector")
 @ComponentScan("net.mikoto.pixiv.core.client")
-@ForestScan("net.mikoto.pixiv.core.connector")
+@ForestScan("net.mikoto.pixiv.core.client")
 @SpringBootApplication
 public class ConnectorTest {
-    DirectConnector directConnector;
-    ForwardConnector forwardConnector;
-
+    @Qualifier("directConnector")
     @Autowired
-    public ConnectorTest(DirectConnector directConnector, ForwardConnector forwardConnector) {
-        this.directConnector = directConnector;
-        this.forwardConnector = forwardConnector;
-    }
+    DirectConnector directConnector;
+    @Qualifier("forwardConnector")
+    @Autowired
+    ForwardConnector forwardConnector;
 
     @Test
     void directGetArtworkTest() throws ParseException {

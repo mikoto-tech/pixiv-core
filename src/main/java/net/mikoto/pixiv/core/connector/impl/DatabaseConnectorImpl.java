@@ -3,7 +3,6 @@ package net.mikoto.pixiv.core.connector.impl;
 import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
@@ -12,7 +11,6 @@ import java.util.Set;
  * @author mikoto
  * @date 2022/7/3 1:53
  */
-@Component("databaseConnector")
 public class DatabaseConnectorImpl implements DatabaseConnector {
     /**
      * Get an artwork from database.
