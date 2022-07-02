@@ -21,13 +21,13 @@ import java.util.StringJoiner;
 @Component("pixivDirectConnector")
 public class DirectConnectorImpl implements DirectConnector {
     /**
-     * Mikoto pixiv usual date format.
+     * Pixiv usual date format.
      * <p>
      * e.g.
      * 2020-03-05T01:23:36+00:00
      * 2021-07-15T15:48:17+00:00
      */
-    public static final SimpleDateFormat USUAL_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
     /**
      * Constants
      */
@@ -69,8 +69,8 @@ public class DirectConnectorImpl implements DirectConnector {
             artwork.setBookmarkCount(artworkRawJsonBody.getIntValue("bookmarkCount"));
             artwork.setLikeCount(artworkRawJsonBody.getIntValue("likeCount"));
             artwork.setLikeCount(artworkRawJsonBody.getIntValue("viewCount"));
-            artwork.setCreateTime(USUAL_DATE_FORMAT.parse(artworkRawJsonBody.getString("createDate")));
-            artwork.setUpdateTime(USUAL_DATE_FORMAT.parse(artworkRawJsonBody.getString("uploadDate")));
+            artwork.setCreateTime(DATE_FORMAT.parse(artworkRawJsonBody.getString("createDate")));
+            artwork.setUpdateTime(DATE_FORMAT.parse(artworkRawJsonBody.getString("uploadDate")));
             artwork.setPatchTime(new Date());
 
             // 处理链接
