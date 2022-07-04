@@ -1,5 +1,6 @@
 package net.mikoto.pixiv.core.test;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.dtflys.forest.springboot.annotation.ForestScan;
 import net.mikoto.pixiv.core.connector.DirectConnector;
 import net.mikoto.pixiv.core.connector.ForwardConnector;
@@ -13,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.text.ParseException;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -71,6 +74,11 @@ public class ConnectorTest {
         assertEquals("/c/540x540_70/img-master/img/2021/07/16/00/48/17/91262365_p0_master1200.jpg", artwork.getIllustUrlSmall());
         assertEquals("/c/250x250_80_a2/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg", artwork.getIllustUrlThumb());
         assertEquals("初音ミク;足裏;足指;女の子;つま先;裸足;ギリシャ型;美脚;縞パン;VOCALOID10000users入り", artwork.getTags());
+
+        Set<Artwork> artworkSet = new HashSet<>();
+        artworkSet.add(new Artwork());
+        System.out.println(JSONObject.toJSONString(artworkSet));
+        ;
     }
 
     @Test

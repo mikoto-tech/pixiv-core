@@ -1,6 +1,5 @@
 package net.mikoto.pixiv.core.client;
 
-import com.alibaba.fastjson2.JSONObject;
 import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.JSONBody;
 import com.dtflys.forest.annotation.Post;
@@ -25,7 +24,7 @@ public interface DatabaseClient {
     @Post(
             "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_INSERT_ARTWORKS + "?token={token}"
     )
-    void insertArtworks(String address, String token, @JSONBody JSONObject artworks);
+    void insertArtworks(String address, String token, @JSONBody String artworks);
 
     /**
      * Get artwork from pixiv database.
@@ -37,7 +36,7 @@ public interface DatabaseClient {
     @Get(
             "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORK + "?artworkId={artworkId}"
     )
-    String getArtwork(String address, String artworkId);
+    String getArtwork(String address, int artworkId);
 
     /**
      * Get artworks from pixiv database.

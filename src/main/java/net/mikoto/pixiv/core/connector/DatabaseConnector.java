@@ -23,7 +23,7 @@ public interface DatabaseConnector extends Connector, Source<DirectServer> {
      * @param pageCount  The page of the artworks.
      * @return The artwork objects list.
      */
-    List<Artwork> getArtworks(String credential, Sort.Order order, String properties, int pageCount);
+    List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount);
 
     /**
      * Get an artwork by id.
@@ -40,4 +40,9 @@ public interface DatabaseConnector extends Connector, Source<DirectServer> {
      * @param artworks The set of artworks.
      */
     void insertArtworks(String token, Set<Artwork> artworks);
+
+    @Override
+    default Artwork getArtworkById(int artworkId) {
+        return getArtwork(artworkId);
+    }
 }

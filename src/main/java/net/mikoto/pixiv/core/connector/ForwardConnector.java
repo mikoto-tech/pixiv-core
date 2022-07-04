@@ -44,4 +44,11 @@ public interface ForwardConnector extends Connector, Source<ForwardServer> {
      * @return The artwork.
      */
     byte[] getImageSingleServer(String address, String key, String url);
+
+    @Override
+    default Artwork getArtworkById(int artworkId) {
+        return getArtwork(artworkId);
+    }
+
+    ;
 }

@@ -25,4 +25,13 @@ public interface DirectConnector extends Connector {
      * @return The image.
      */
     byte[] getImage(String url);
+
+    @Override
+    default Artwork getArtworkById(int artworkId) {
+        try {
+            return getArtwork(artworkId);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -3,6 +3,13 @@
 [![wakatime](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/af7838fd-d70b-4eea-a108-a2fff9cf5f17.svg)](https://wakatime.com/badge/user/1881dd28-2018-456f-8c50-e897127472e4/project/af7838fd-d70b-4eea-a108-a2fff9cf5f17)
 [![Java CI](https://github.com/mikoto-tech/pixiv-core/actions/workflows/ci.yaml/badge.svg)](https://github.com/mikoto-tech/pixiv-core/actions/workflows/ci.yaml)
 
+## 本仓库是为了
+
+- 提供统一标准类（诸如model、util）
+- 通过connector与client将各个部分以Http的方式连接起来
+
+## 如何使用
+
 ## 声明
 
 ### 一切开发旨在学习，请勿用于非法用途

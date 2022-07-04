@@ -14,6 +14,32 @@ repositories {
     mavenLocal()
 }
 
+publishing {
+    publications {
+        gpr(MavenPublication) {
+            from components.java
+            pom {
+                name = "pixiv-core"
+                description = "Mikoto pixiv core"
+                url = "https://mikoto.net.cn"
+                licenses {
+                    license {
+                        name = "GNU Affero General Public License v3.0"
+                        url = "https://www.gnu.org/licenses/agpl-3.0.en.html"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "mikoto"
+                        name = "Zhang keshun"
+                        email = "mikoto@ungine.cn"
+                    }
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'com.dtflys.forest:forest-spring-boot-starter:1.5.22'
