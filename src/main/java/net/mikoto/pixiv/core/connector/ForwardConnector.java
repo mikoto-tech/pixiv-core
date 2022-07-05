@@ -49,6 +49,4 @@ public interface ForwardConnector extends Connector, Source<ForwardServer> {
     default Artwork getArtworkById(int artworkId) {
         return getArtwork(artworkId);
     }
-
-    ;
 }

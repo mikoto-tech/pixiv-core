@@ -48,8 +48,11 @@ dependencies {
     compileOnly 'org.jetbrains:annotations:23.0.0'
     compileOnly 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.javatuples:javatuples:1.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'com.dtflys.forest:forest-spring-boot-starter:1.5.22'
+    testImplementation 'mysql:mysql-connector-java:8.0.29'
+    testImplementation 'com.squareup.okhttp3:okhttp:4.10.0'
     testImplementation 'com.alibaba.fastjson2:fastjson2:2.0.8'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

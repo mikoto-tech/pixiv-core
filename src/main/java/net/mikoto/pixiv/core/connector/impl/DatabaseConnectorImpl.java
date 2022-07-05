@@ -6,7 +6,7 @@ import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.core.client.DatabaseClient;
 import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
-import net.mikoto.pixiv.core.model.DirectServer;
+import net.mikoto.pixiv.core.model.DatabaseServer;
 import net.mikoto.pixiv.core.source.StaticSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -20,7 +20,7 @@ import java.util.Set;
  * @date 2022/7/3 1:53
  */
 @Component("databaseConnector")
-public class DatabaseConnectorImpl extends StaticSource<DirectServer> implements DatabaseConnector {
+public class DatabaseConnectorImpl extends StaticSource<DatabaseServer> implements DatabaseConnector {
     /**
      * Constants
      */
@@ -48,7 +48,7 @@ public class DatabaseConnectorImpl extends StaticSource<DirectServer> implements
      */
     @Override
     public List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount) {
-        JSONObject artworksJson = JSON.parseObject(databaseClient.getArtworks(getServer().address(), credential, order, properties, pageCount));
+        JSONObject artworksJson = JSON.parseObject(databaseClient.getArtworks(getServer().getAddress(), credential, order, properties, pageCount));
 
         if (artworksJson.getBooleanValue(SUCCESS_KEY)) {
             return artworksJson.getJSONArray("body").toList(Artwork.class);
@@ -65,7 +65,7 @@ public class DatabaseConnectorImpl extends StaticSource<DirectServer> implements
      */
     @Override
     public Artwork getArtwork(int artworkId) {
-        JSONObject artworkJson = JSON.parseObject(databaseClient.getArtwork(getServer().address(), artworkId));
+        JSONObject artworkJson = JSON.parseObject(databaseClient.getArtwork(getServer().getAddress(), artworkId));
         return artworkJson.getObject("body", Artwork.class);
     }
 
@@ -77,6 +77,6 @@ public class DatabaseConnectorImpl extends StaticSource<DirectServer> implements
      */
     @Override
     public void insertArtworks(String token, Set<Artwork> artworks) {
-        databaseClient.insertArtworks(getServer().address(), token, JSONArray.of(artworks).toJSONString());
+        databaseClient.insertArtworks(getServer().getAddress(), token, JSONArray.of(artworks).toJSONString());
     }
 }

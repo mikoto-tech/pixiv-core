@@ -6,14 +6,13 @@ import java.util.Objects;
  * @author mikoto
  * @date 2022/3/27 3:42
  */
-public class ForwardServer implements CurrentWeighted, HttpServer {
-    private String address;
+public class ForwardServer extends HttpServer implements CurrentWeighted {
     private final int weight;
     private int currentWeight = 0;
     private String key;
 
     public ForwardServer(String address, int weight, String key) {
-        this.address = address;
+        super.setAddress(address);
         this.weight = weight;
         this.key = key;
     }
@@ -21,7 +20,7 @@ public class ForwardServer implements CurrentWeighted, HttpServer {
     @Override
     public String toString() {
         return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nForwardServer{" +
-                "address='" + address + '\'' +
+                "address='" + super.getAddress() + '\'' +
                 ", weight=" + weight +
                 ", currentWeight=" + currentWeight +
                 ", key='" + key + '\'' +
@@ -37,22 +36,13 @@ public class ForwardServer implements CurrentWeighted, HttpServer {
             return false;
         }
         ForwardServer that = (ForwardServer) o;
-        return weight == that.weight && currentWeight == that.currentWeight && Objects.equals(address, that.address) && Objects.equals(key, that.key);
+        return weight == that.weight && currentWeight == that.currentWeight && Objects.equals(super.getAddress(), that.getAddress()) && Objects.equals(key, that.key);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(address, weight, currentWeight, key);
+        return Objects.hash(super.getAddress(), weight, currentWeight, key);
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public int getWeight() {
         return weight;
     }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.TestPropertySource;
 
 import java.text.ParseException;
 import java.util.HashSet;
@@ -24,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @date 2022/7/1 23:17
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ComponentScan("net.mikoto.pixiv.core.connector")
-@ComponentScan("net.mikoto.pixiv.core.client")
-@ForestScan("net.mikoto.pixiv.core.client")
+@ComponentScan("net.mikoto.pixiv")
+@ForestScan("net.mikoto.pixiv")
 @SpringBootApplication
+@TestPropertySource("classpath:test.properties")
 public class ConnectorTest {
     @Qualifier("directConnector")
     DirectConnector directConnector;
