@@ -8,7 +8,7 @@ import java.text.ParseException;
  * @author mikoto
  * @date 2022/6/25 1:19
  */
-public interface DirectConnector extends Connector {
+public interface DirectConnector extends ArtworkConnector {
     /**
      * Get the artwork by id.
      *

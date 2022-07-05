@@ -12,7 +12,7 @@ import java.util.Set;
  * @author mikoto
  * @date 2022/7/2 17:42
  */
-public interface DatabaseConnector extends Connector, Source<DatabaseServer> {
+public interface DatabaseConnector extends ArtworkConnector, Source<DatabaseServer> {
     /**
      * Get an artwork from database.
      * Each page can provide 12 artworks.

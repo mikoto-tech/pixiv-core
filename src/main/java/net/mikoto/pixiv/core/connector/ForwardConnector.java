@@ -8,7 +8,7 @@ import net.mikoto.pixiv.core.source.Source;
  * @author mikoto
  * @date 2022/7/2 17:42
  */
-public interface ForwardConnector extends Connector, Source<ForwardServer> {
+public interface ForwardConnector extends ArtworkConnector, Source<ForwardServer> {
     /**
      * Get the artwork by id.
      *
