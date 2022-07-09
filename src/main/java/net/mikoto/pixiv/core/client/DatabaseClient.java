@@ -49,7 +49,7 @@ public interface DatabaseClient {
      * @return The artworks.
      */
     @Post(
-            "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORKS + "?credential={credential}&order={order}&properties={properties}&pageCount={pageCount}"
+            "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORKS + "?credential={credential}&order={order}&properties={properties}&pageCount={pageCount}&grading={grading}"
     )
-    String getArtworks(String address, String credential, Sort.Direction order, String properties, int pageCount);
+    String getArtworks(String address, String credential, Sort.Direction order, String properties, int pageCount, int grading);
 }

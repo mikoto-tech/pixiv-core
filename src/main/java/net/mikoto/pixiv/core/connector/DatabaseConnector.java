@@ -2,6 +2,7 @@ package net.mikoto.pixiv.core.connector;
 
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.DatabaseServer;
+import net.mikoto.pixiv.core.model.Grade;
 import net.mikoto.pixiv.core.source.Source;
 import org.springframework.data.domain.Sort;
 
@@ -23,7 +24,7 @@ public interface DatabaseConnector extends ArtworkConnector, Source<DatabaseServ
      * @param pageCount  The page of the artworks.
      * @return The artwork objects list.
      */
-    List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount);
+    List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount, Grade grading);
 
     /**
      * Get an artwork by id.

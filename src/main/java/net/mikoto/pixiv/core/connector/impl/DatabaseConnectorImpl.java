@@ -7,7 +7,9 @@ import net.mikoto.pixiv.core.client.DatabaseClient;
 import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.DatabaseServer;
+import net.mikoto.pixiv.core.model.Grade;
 import net.mikoto.pixiv.core.source.StaticSource;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
@@ -47,8 +49,8 @@ public class DatabaseConnectorImpl extends StaticSource<DatabaseServer> implemen
      * @return The artwork objects list.
      */
     @Override
-    public List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount) {
-        JSONObject artworksJson = JSON.parseObject(databaseClient.getArtworks(getServer().getAddress(), credential, order, properties, pageCount));
+    public List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount, @NotNull Grade grade) {
+        JSONObject artworksJson = JSON.parseObject(databaseClient.getArtworks(getServer().getAddress(), credential, order, properties, pageCount, grade.getGrading()));
 
         if (artworksJson.getBooleanValue(SUCCESS_KEY)) {
             return artworksJson.getJSONArray("body").toList(Artwork.class);
