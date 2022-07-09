@@ -5,7 +5,7 @@ import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.core.client.ForwardClient;
 import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
-import net.mikoto.pixiv.core.model.ForwardServer;
+import net.mikoto.pixiv.core.model.server.ForwardServer;
 import net.mikoto.pixiv.core.source.SmoothWeightedSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

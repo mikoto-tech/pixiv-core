@@ -1,6 +1,6 @@
 package net.mikoto.pixiv.core.source;
 
-import net.mikoto.pixiv.core.model.CurrentWeighted;
+import net.mikoto.pixiv.core.model.server.CurrentWeighted;
 
 import java.util.HashSet;
 import java.util.Iterator;

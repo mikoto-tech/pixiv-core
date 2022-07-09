@@ -1,4 +1,4 @@
-package net.mikoto.pixiv.core.model;
+package net.mikoto.pixiv.core.model.server;
 
 import java.util.Objects;
 
@@ -12,6 +12,7 @@ public class ForwardServer extends HttpServer implements CurrentWeighted {
     private String key;
 
     public ForwardServer(String address, int weight, String key) {
+        super(address);
         super.setAddress(address);
         this.weight = weight;
         this.key = key;

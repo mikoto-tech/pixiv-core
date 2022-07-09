@@ -1,4 +1,4 @@
-package net.mikoto.pixiv.core.model;
+package net.mikoto.pixiv.core.model.server;
 
 /**
  * @author mikoto

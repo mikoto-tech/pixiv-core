@@ -1,7 +1,7 @@
 package net.mikoto.pixiv.core.connector;
 
 import net.mikoto.pixiv.core.model.Artwork;
-import net.mikoto.pixiv.core.model.ForwardServer;
+import net.mikoto.pixiv.core.model.server.ForwardServer;
 import net.mikoto.pixiv.core.source.Source;
 
 /**

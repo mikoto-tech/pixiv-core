@@ -1,8 +1,8 @@
 package net.mikoto.pixiv.core.connector;
 
 import net.mikoto.pixiv.core.model.Artwork;
-import net.mikoto.pixiv.core.model.DatabaseServer;
 import net.mikoto.pixiv.core.model.Grade;
+import net.mikoto.pixiv.core.model.server.DatabaseServer;
 import net.mikoto.pixiv.core.source.Source;
 import org.springframework.data.domain.Sort;
 

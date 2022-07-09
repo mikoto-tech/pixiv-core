@@ -1,9 +1,13 @@
-package net.mikoto.pixiv.core.model;
+package net.mikoto.pixiv.core.model.server;
 
 import java.util.Objects;
 
 public class HttpServer implements Server {
     private String address;
+
+    public HttpServer(String address) {
+        this.address = address;
+    }
 
     public String getAddress() {
         return address;

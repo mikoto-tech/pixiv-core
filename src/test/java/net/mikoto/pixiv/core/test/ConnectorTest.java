@@ -5,7 +5,7 @@ import com.dtflys.forest.springboot.annotation.ForestScan;
 import net.mikoto.pixiv.core.connector.DirectConnector;
 import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
-import net.mikoto.pixiv.core.model.ForwardServer;
+import net.mikoto.pixiv.core.model.server.ForwardServer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
