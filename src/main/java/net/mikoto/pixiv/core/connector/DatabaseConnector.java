@@ -6,7 +6,6 @@ import net.mikoto.pixiv.core.model.server.DatabaseServer;
 import net.mikoto.pixiv.core.source.Source;
 import org.springframework.data.domain.Sort;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,7 +23,7 @@ public interface DatabaseConnector extends ArtworkConnector, Source<DatabaseServ
      * @param pageCount  The page of the artworks.
      * @return The artwork objects list.
      */
-    List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount, Grade grading);
+    Artwork[] getArtworks(String credential, Sort.Direction order, String properties, int pageCount, Grade grading);
 
     /**
      * Get an artwork by id.

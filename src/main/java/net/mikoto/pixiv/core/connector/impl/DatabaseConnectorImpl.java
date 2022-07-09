@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -49,11 +48,11 @@ public class DatabaseConnectorImpl extends StaticSource<DatabaseServer> implemen
      * @return The artwork objects list.
      */
     @Override
-    public List<Artwork> getArtworks(String credential, Sort.Direction order, String properties, int pageCount, @NotNull Grade grade) {
+    public Artwork[] getArtworks(String credential, Sort.Direction order, String properties, int pageCount, @NotNull Grade grade) {
         JSONObject artworksJson = JSON.parseObject(databaseClient.getArtworks(getServer().getAddress(), credential, order, properties, pageCount, grade.getGrading()));
 
         if (artworksJson.getBooleanValue(SUCCESS_KEY)) {
-            return artworksJson.getJSONArray("body").toList(Artwork.class);
+            return artworksJson.getJSONArray("body").toArray(Artwork.class);
         } else {
             return null;
         }
