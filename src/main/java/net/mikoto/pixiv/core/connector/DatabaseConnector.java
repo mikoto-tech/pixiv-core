@@ -41,6 +41,14 @@ public interface DatabaseConnector extends ArtworkConnector, Source<DatabaseServ
      */
     void insertArtworks(String token, Set<Artwork> artworks);
 
+    /**
+     * Override the Connector interface's getArtworkById() method in order to get artwork by artwork id.
+     * <b>Warning! There will throw RuntimeException instead normal exception!!! It's not safe!!!</b>
+     * <b>So use this method as less as you can.</b>
+     *
+     * @param artworkId The artwork id.
+     * @return An artwork object.
+     */
     @Override
     default Artwork getArtworkById(int artworkId) {
         return getArtwork(artworkId);

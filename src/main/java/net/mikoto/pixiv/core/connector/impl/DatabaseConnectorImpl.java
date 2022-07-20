@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 import java.util.Set;
 
 /**
+ * If you don't use this component you still need to load: org.springframework.data:spring-data-commons
+ *
  * @author mikoto
  * @date 2022/7/3 1:53
  */

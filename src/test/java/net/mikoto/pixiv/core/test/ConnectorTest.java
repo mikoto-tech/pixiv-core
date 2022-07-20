@@ -1,11 +1,11 @@
 package net.mikoto.pixiv.core.test;
 
-import com.alibaba.fastjson2.JSONObject;
 import com.dtflys.forest.springboot.annotation.ForestScan;
 import net.mikoto.pixiv.core.connector.DirectConnector;
 import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.server.ForwardServer;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,8 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.TestPropertySource;
 
 import java.text.ParseException;
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,21 +30,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ConnectorTest {
     @Qualifier("directConnector")
     DirectConnector directConnector;
-    public static final ForwardServer FORWARD_SERVER =
+    public static final ForwardServer FORWARD_SERVER_1 =
             new ForwardServer(
-                    "https://forward-2.mikoto-pixiv.cc",
+                    "https://forward-1.mikoto-pixiv.cc",
                     1,
-                    "08dYksDTtX"
+                    ""
+            );
+    public static final ForwardServer FORWARD_SERVER_2 =
+            new ForwardServer("https://forward-2.mikoto-pixiv.cc",
+                    1,
+                    ""
             );
     @Qualifier("forwardConnector")
     ForwardConnector forwardConnector;
 
     @Autowired
-    public ConnectorTest(DirectConnector directConnector, ForwardConnector forwardConnector) {
+    public ConnectorTest(DirectConnector directConnector, @NotNull ForwardConnector forwardConnector) {
         this.directConnector = directConnector;
         this.forwardConnector = forwardConnector;
 
-        forwardConnector.addServer(FORWARD_SERVER);
+        forwardConnector.addServer(FORWARD_SERVER_1);
+        forwardConnector.addServer(FORWARD_SERVER_2);
     }
 
     @Test
@@ -75,11 +79,6 @@ public class ConnectorTest {
         assertEquals("/c/540x540_70/img-master/img/2021/07/16/00/48/17/91262365_p0_master1200.jpg", artwork.getIllustUrlSmall());
         assertEquals("/c/250x250_80_a2/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg", artwork.getIllustUrlThumb());
         assertEquals("初音ミク;足裏;足指;女の子;つま先;裸足;ギリシャ型;美脚;縞パン;VOCALOID10000users入り", artwork.getTags());
-
-        Set<Artwork> artworkSet = new HashSet<>();
-        artworkSet.add(new Artwork());
-        System.out.println(JSONObject.toJSONString(artworkSet));
-        ;
     }
 
     @Test

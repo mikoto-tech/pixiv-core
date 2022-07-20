@@ -31,30 +31,6 @@ public class ForwardConnectorImpl extends SmoothWeightedSource<ForwardServer> im
     }
 
     /**
-     * Get the artwork by id.
-     *
-     * @param artworkId The artwork id.
-     * @return The artwork.
-     */
-    @Override
-    public Artwork getArtwork(int artworkId) {
-        ForwardServer forwardServer = getServer();
-        return getArtworkSingleServer(forwardServer.getAddress(), forwardServer.getKey(), artworkId);
-    }
-
-    /**
-     * Get the image by url.
-     *
-     * @param url The url
-     * @return The image bytes.
-     */
-    @Override
-    public byte[] getImage(String url) {
-        ForwardServer forwardServer = getServer();
-        return getImageSingleServer(forwardServer.getAddress(), forwardServer.getKey(), url);
-    }
-
-    /**
      * Get artwork at single server.
      *
      * @param address   The address of the server.

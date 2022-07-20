@@ -41,14 +41,19 @@ publishing {
 }
 
 dependencies {
+    // Spring Starter
     compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'com.dtflys.forest:forest-spring-boot-starter:1.5.22'
+    compileOnly 'org.springframework.boot:spring-boot-starter-web'
+
+    // Others
     compileOnly 'com.alibaba.fastjson2:fastjson2:2.0.7'
     compileOnly 'com.squareup.okhttp3:okhttp:4.10.0'
     compileOnly 'org.jetbrains:annotations:23.0.0'
-    compileOnly 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.javatuples:javatuples:1.2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation 'org.springframework.data:spring-data-commons:2.7.0'
+    testImplementation 'org.springframework.data:spring-data-commons:2.7.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'com.dtflys.forest:forest-spring-boot-starter:1.5.22'
     testImplementation 'mysql:mysql-connector-java:8.0.29'

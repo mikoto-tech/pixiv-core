@@ -15,7 +15,10 @@ public interface ForwardConnector extends ArtworkConnector, Source<ForwardServer
      * @param artworkId The artwork id.
      * @return The artwork.
      */
-    Artwork getArtwork(int artworkId);
+    default Artwork getArtwork(int artworkId) {
+        ForwardServer forwardServer = this.getServer();
+        return getArtworkSingleServer(forwardServer.getAddress(), forwardServer.getKey(), artworkId);
+    }
 
     /**
      * Get the image by url.
@@ -23,7 +26,10 @@ public interface ForwardConnector extends ArtworkConnector, Source<ForwardServer
      * @param url The url
      * @return The image bytes.
      */
-    byte[] getImage(String url);
+    default byte[] getImage(String url) {
+        ForwardServer forwardServer = this.getServer();
+        return getImageSingleServer(forwardServer.getAddress(), forwardServer.getKey(), url);
+    }
 
     /**
      * Get artwork at single server.
@@ -45,6 +51,14 @@ public interface ForwardConnector extends ArtworkConnector, Source<ForwardServer
      */
     byte[] getImageSingleServer(String address, String key, String url);
 
+    /**
+     * Override the Connector interface's getArtworkById() method in order to get artwork by artwork id.
+     * <b>Warning! There will throw RuntimeException instead normal exception!!! It's not safe!!!</b>
+     * <b>So use this method as less as you can.</b>
+     *
+     * @param artworkId The artwork id.
+     * @return An artwork object.
+     */
     @Override
     default Artwork getArtworkById(int artworkId) {
         return getArtwork(artworkId);
