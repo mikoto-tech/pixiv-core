@@ -27,7 +27,6 @@ repositories {
 #### Maven
 
 ```xml
-
 <repositories>
     <repository>
         <id>mikoto-tech-maven-repository</id>
