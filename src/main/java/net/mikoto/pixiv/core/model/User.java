@@ -10,6 +10,23 @@ import java.util.Objects;
 /**
  * @author mikoto
  * @date 2022/2/1 19:22
+ * <p>
+ * sql:
+ * <p>
+ * create table pixiv.user
+ * (
+ *     pk_user_id    bigint unsigned auto_increment
+ *         primary key,
+ *     user_name     varchar(25) not null,
+ *     user_password varchar(64) not null,
+ *     user_salt     varchar(10) not null,
+ *     create_time   datetime    not null,
+ *     update_time   datetime    not null,
+ *     constraint user_pk_user_id_uindex
+ *         unique (pk_user_id),
+ *     constraint user_user_name_uindex
+ *         unique (user_name)
+ * );
  */
 @Entity
 @Table(name = "user")

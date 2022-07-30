@@ -10,6 +10,19 @@ import java.util.Objects;
  * @author mikoto
  * Create for pixiv-core
  * Create at 2022/7/30
+ * <p>
+ * Sql:
+ * <p>
+ * create table pixiv.client
+ * (
+ *     pk_client_id   int           not null
+ *         primary key,
+ *     client_secret  varchar(64)   not null,
+ *     allow_url      varchar(1000) not null,
+ *     contract_scope varchar(1000) not null,
+ *     constraint client_pk_client_id_uindex
+ *         unique (pk_client_id)
+ * );
  */
 @Entity
 @Table(name = "client")
