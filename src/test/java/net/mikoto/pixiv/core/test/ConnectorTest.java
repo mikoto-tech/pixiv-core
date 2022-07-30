@@ -41,6 +41,11 @@ public class ConnectorTest {
                     1,
                     ""
             );
+    public static final ForwardServer FORWARD_SERVER_3 =
+            new ForwardServer("https://forward-3.mikoto-pixiv.cc",
+                    1,
+                    ""
+            );
     @Qualifier("forwardConnector")
     ForwardConnector forwardConnector;
 
@@ -51,6 +56,7 @@ public class ConnectorTest {
 
         forwardConnector.addServer(FORWARD_SERVER_1);
         forwardConnector.addServer(FORWARD_SERVER_2);
+        forwardConnector.addServer(FORWARD_SERVER_3);
     }
 
     @Test
