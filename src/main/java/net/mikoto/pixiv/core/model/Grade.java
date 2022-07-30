@@ -6,8 +6,19 @@ package net.mikoto.pixiv.core.model;
  * For pixiv-core
  */
 public enum Grade {
+    /**
+     * The general grade is for all people.
+     */
     General(0),
+
+    /**
+     * The R-18 grade is for a person who is over 18 years old.
+     */
     R18(1),
+
+    /**
+     * The R-18G grade is for a person who is over 18 years old and have good mental ability.
+     */
     R18G(2);
 
     private final int grading;
