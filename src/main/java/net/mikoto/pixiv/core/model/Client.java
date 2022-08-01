@@ -29,16 +29,16 @@ import java.util.Objects;
 public class Client {
     @Id
     @Column(name = "pk_client_id", nullable = false, unique = true)
-    private ClientId clientId;
+    private int clientId;
     private String clientSecret;
     private String allowUrl;
     private String contractScope;
 
-    public ClientId getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
-    public void setClientId(ClientId clientId) {
+    public void setClientId(int clientId) {
         this.clientId = clientId;
     }
 
