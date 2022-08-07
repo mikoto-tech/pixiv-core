@@ -49,4 +49,15 @@ public interface OAuth2Client {
             @Var("client") Client client,
             @Var("refreshToken") String refreshToken
     );
+
+    @Get(
+            url = "{address}/oauth2/check" +
+                    "&token={token}" +
+                    "&scope={scope}"
+    )
+    String checkToken(
+            @Var("address") String address,
+            @NotNull @Var("token") String token,
+            @NotNull @Var("scope") String scope
+    );
 }
