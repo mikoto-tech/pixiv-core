@@ -36,11 +36,6 @@ public class ConnectorTest {
                     1,
                     ""
             );
-    public static final ForwardServer FORWARD_SERVER_2 =
-            new ForwardServer("https://forward-2.mikoto-pixiv.cc",
-                    1,
-                    ""
-            );
     public static final ForwardServer FORWARD_SERVER_3 =
             new ForwardServer("https://forward-3.mikoto-pixiv.cc",
                     1,
@@ -55,7 +50,6 @@ public class ConnectorTest {
         this.forwardConnector = forwardConnector;
 
         forwardConnector.addServer(FORWARD_SERVER_1);
-        forwardConnector.addServer(FORWARD_SERVER_2);
         forwardConnector.addServer(FORWARD_SERVER_3);
     }
 
