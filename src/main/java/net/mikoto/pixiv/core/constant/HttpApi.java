@@ -1,4 +1,4 @@
-package net.mikoto.constant;
+package net.mikoto.pixiv.core.constant;
 
 /**
  * @author mikoto

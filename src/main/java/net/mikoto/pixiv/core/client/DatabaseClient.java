@@ -6,7 +6,7 @@ import com.dtflys.forest.annotation.Post;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import static net.mikoto.constant.HttpApi.*;
+import static net.mikoto.pixiv.core.constant.HttpApi.*;
 
 /**
  * @author mikoto
