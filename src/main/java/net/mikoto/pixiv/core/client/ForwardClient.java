@@ -4,7 +4,7 @@ import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.Var;
 import org.springframework.stereotype.Component;
 
-import static net.mikoto.pixiv.core.constant.HttpApi.*;
+import static net.mikoto.constant.HttpApi.*;
 
 /**
  * @author mikoto
