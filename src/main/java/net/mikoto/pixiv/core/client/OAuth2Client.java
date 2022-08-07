@@ -7,7 +7,7 @@ import net.mikoto.pixiv.core.model.GrantType;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-@Component("oAuth2Client")
+@Component
 public interface OAuth2Client {
     @Get(
             url = "{address}/oauth2/token" +
