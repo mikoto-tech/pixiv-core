@@ -1,5 +1,7 @@
 package net.mikoto.pixiv.core.model;
 
+import net.mikoto.pixiv.core.annotation.ForbiddenField;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -35,7 +37,9 @@ public class User {
     @Column(name = "pk_user_id", nullable = false, unique = true)
     private int userId;
     private String userName;
+    @ForbiddenField
     private String userPassword;
+    @ForbiddenField
     private String userSalt;
     private Date createTime;
     private Date updateTime;
