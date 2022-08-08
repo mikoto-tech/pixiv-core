@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface OAuth2Client {
+public interface CentralClient {
     @Get(
             url = "{address}/oauth2/token" +
                     "?grant_type=${grantType.getType()}" +
