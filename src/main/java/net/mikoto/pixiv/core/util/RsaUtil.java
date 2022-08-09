@@ -20,7 +20,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @author mikoto
  * @date 2022/4/23 2:23
  */
-public class RsaUtil {
+public final class RsaUtil {
     /**
      * RSA max encrypt block.
      */

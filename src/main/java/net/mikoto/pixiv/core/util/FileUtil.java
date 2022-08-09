@@ -10,7 +10,7 @@ import java.io.IOException;
  * @author mikoto
  * @date 2022/1/2 1:33
  */
-public class FileUtil {
+public final class FileUtil {
     /**
      * Create a new dir or don't do anything.
      *

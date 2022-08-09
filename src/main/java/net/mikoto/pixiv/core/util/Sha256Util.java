@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
  * @modify mikoto
  * @date 2022/4/23 2:23
  */
-public class Sha256Util {
+public final class Sha256Util {
 
     /**
      * Encode normal string to sha256 string.
