@@ -1,11 +1,13 @@
 package net.mikoto.pixiv.core.connector;
 
+import com.alibaba.fastjson2.JSONArray;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.Grade;
 import net.mikoto.pixiv.core.model.server.DatabaseServer;
 import net.mikoto.pixiv.core.source.Source;
 import org.springframework.data.domain.Sort;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -37,9 +39,39 @@ public interface DatabaseConnector extends ArtworkConnector, Source<DatabaseServ
      * Insert artworks.
      *
      * @param token    The token of you.
-     * @param artworks The set of artworks.
+     * @param artworks Artworks.
      */
-    void insertArtworks(String token, Set<Artwork> artworks);
+    void insertArtworks(String token, JSONArray artworks);
+
+    /**
+     * Insert artworks.
+     *
+     * @param token    The token of you.
+     * @param artworks Artworks.
+     */
+    default void insertArtworks(String token, Set<Artwork> artworks) {
+        insertArtworks(token, JSONArray.of(artworks));
+    }
+
+    /**
+     * Insert artworks.
+     *
+     * @param token    The token of you.
+     * @param artworks Artworks.
+     */
+    default void insertArtworks(String token, List<Artwork> artworks) {
+        insertArtworks(token, JSONArray.of(artworks));
+    }
+
+    /**
+     * Insert artworks.
+     *
+     * @param token    The token of you.
+     * @param artworks Artworks.
+     */
+    default void insertArtworks(String token, Artwork[] artworks) {
+        insertArtworks(token, JSONArray.of((Object) artworks));
+    }
 
     /**
      * Override the Connector interface's getArtworkById() method in order to get artwork by artwork id.

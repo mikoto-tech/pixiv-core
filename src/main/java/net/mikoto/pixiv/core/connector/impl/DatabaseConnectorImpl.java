@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-
 /**
  * If you don't use this component you still need to load: org.springframework.data:spring-data-commons
  *
@@ -79,7 +77,7 @@ public class DatabaseConnectorImpl extends StaticSource<DatabaseServer> implemen
      * @param artworks The set of artworks.
      */
     @Override
-    public void insertArtworks(String token, Set<Artwork> artworks) {
-        databaseClient.insertArtworks(getServer().getAddress(), token, JSONArray.of(artworks).toJSONString());
+    public void insertArtworks(String token, @NotNull JSONArray artworks) {
+        databaseClient.insertArtworks(getServer().getAddress(), token, artworks.toJSONString());
     }
 }
