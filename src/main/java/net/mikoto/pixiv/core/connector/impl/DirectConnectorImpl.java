@@ -1,6 +1,7 @@
 package net.mikoto.pixiv.core.connector.impl;
 
 import com.alibaba.fastjson2.JSONObject;
+import com.dtflys.forest.exceptions.ForestNetworkException;
 import net.mikoto.pixiv.core.client.DirectClient;
 import net.mikoto.pixiv.core.connector.DirectConnector;
 import net.mikoto.pixiv.core.model.Artwork;
@@ -55,7 +56,16 @@ public class DirectConnectorImpl implements DirectConnector {
     public Artwork getArtwork(int artworkId) throws ParseException {
         Artwork artwork = new Artwork();
 
-        JSONObject artworkRawJson = JSONObject.parseObject(directClient.getArtwork(artworkId));
+        JSONObject artworkRawJson;
+        try {
+            artworkRawJson = JSONObject.parseObject(directClient.getArtwork(artworkId));
+        } catch (ForestNetworkException e) {
+            if (e.getStatusCode() == 404) {
+                return null;
+            } else {
+                throw e;
+            }
+        }
         if (!artworkRawJson.getBooleanValue("error")) {
             JSONObject artworkRawJsonBody = artworkRawJson.getJSONObject("body");
 
