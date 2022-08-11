@@ -17,6 +17,7 @@ import org.springframework.test.context.TestPropertySource;
 import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * @author mikoto
@@ -25,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ComponentScan("net.mikoto.pixiv")
 @ForestScan("net.mikoto.pixiv")
-@SpringBootApplication
 @TestPropertySource("classpath:test.properties")
+@SpringBootApplication
 public class ConnectorTest {
     @Qualifier("directConnector")
     DirectConnector directConnector;
@@ -65,6 +66,12 @@ public class ConnectorTest {
         assertEquals("/c/540x540_70/img-master/img/2021/07/16/00/48/17/91262365_p0_master1200.jpg", artwork.getIllustUrlSmall());
         assertEquals("/c/250x250_80_a2/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg", artwork.getIllustUrlThumb());
         assertEquals("初音ミク;足裏;足指;女の子;つま先;裸足;ギリシャ型;美脚;縞パン;VOCALOID10000users入り", artwork.getTags());
+    }
+
+    @Test
+    void directGetNullArtworkTest() throws ParseException {
+        Artwork artwork = directConnector.getArtwork(1);
+        assertNull(artwork);
     }
 
     @Test

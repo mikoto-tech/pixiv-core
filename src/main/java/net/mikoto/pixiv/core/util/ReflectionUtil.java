@@ -8,6 +8,9 @@ import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author mikoto
+ */
 public final class ReflectionUtil {
     /**
      * Get the forbidden field list in the class.
