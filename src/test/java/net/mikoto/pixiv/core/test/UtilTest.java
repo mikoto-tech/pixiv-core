@@ -14,7 +14,7 @@ public class UtilTest {
     @Test
     void Sha256UtilTest() {
         String sha256 = getSha256("LOVE YOU FOREVER, Lin.");
-        assertEquals("8D969EEF6ECAD3C29A3A629280E686CF0C3F5D5A86AFF3CA12020C923ADC6C92", sha256);
+        assertEquals("8D410532F44ED09A0DA38F1A970E9559C3ABEFA83A376B9CB5DDEB8A045A8BA2", sha256);
     }
 
     @Test
