@@ -20,7 +20,7 @@ public final class ReflectionUtil {
      */
     public static @NotNull List<String> getForbiddenField(@NotNull Class<?> clazz) {
         List<String> resultString = new LinkedList<>();
-        Field[] fields = clazz.getFields();
+        Field[] fields = clazz.getDeclaredFields();
         for (Field field :
                 fields) {
             Annotation[] annotations = field.getAnnotations();
