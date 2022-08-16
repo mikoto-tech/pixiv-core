@@ -17,9 +17,12 @@ import java.util.Objects;
  * (
  *     pk_client_id   int           not null
  *         primary key,
+ *     client_name    varchar(50)   not null,
  *     client_secret  varchar(64)   not null,
  *     allow_url      varchar(1000) not null,
  *     contract_scope varchar(1000) not null,
+ *     constraint client_client_name_uindex
+ *         unique (client_name),
  *     constraint client_pk_client_id_uindex
  *         unique (pk_client_id)
  * );
@@ -30,6 +33,7 @@ public class Client {
     @Id
     @Column(name = "pk_client_id", nullable = false, unique = true)
     private int clientId;
+    private String clientName;
     private String clientSecret;
     private String allowUrl;
     private String contractScope;
@@ -64,6 +68,14 @@ public class Client {
 
     public void setContractScope(String contractScope) {
         this.contractScope = contractScope;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     @Override

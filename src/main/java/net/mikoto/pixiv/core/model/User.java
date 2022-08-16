@@ -17,13 +17,16 @@ import java.util.Objects;
  * <p>
  * create table pixiv.user
  * (
- *     pk_user_id    bigint unsigned auto_increment
+ *     pk_user_id      bigint unsigned auto_increment
  *         primary key,
- *     user_name     varchar(25) not null,
- *     user_password varchar(64) not null,
- *     user_salt     varchar(10) not null,
- *     create_time   datetime    not null,
- *     update_time   datetime    not null,
+ *     user_name       varchar(25) not null,
+ *     user_password   varchar(64) not null,
+ *     user_salt       varchar(10) not null,
+ *     insert_artworks tinyint(1)  not null,
+ *     r18             tinyint(1)  not null,
+ *     r18g            tinyint(1)  not null,
+ *     create_time     datetime    not null,
+ *     update_time     datetime    not null,
  *     constraint user_pk_user_id_uindex
  *         unique (pk_user_id),
  *     constraint user_user_name_uindex
@@ -43,6 +46,9 @@ public class User {
     private String userSalt;
     private Date createTime;
     private Date updateTime;
+    private boolean insertArtworks;
+    private boolean r18;
+    private boolean r18g;
 
     public int getUserId() {
         return userId;
@@ -92,32 +98,55 @@ public class User {
         this.updateTime = updateTime;
     }
 
+    public boolean isInsertArtworks() {
+        return insertArtworks;
+    }
+
+    public void setInsertArtworks(boolean insertArtworks) {
+        this.insertArtworks = insertArtworks;
+    }
+
+    public boolean isR18() {
+        return r18;
+    }
+
+    public void setR18(boolean r18) {
+        this.r18 = r18;
+    }
+
+    public boolean isR18g() {
+        return r18g;
+    }
+
+    public void setR18g(boolean r18g) {
+        this.r18g = r18g;
+    }
+
     @Override
     public String toString() {
-        return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nUser{" +
+        return "User{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userSalt='" + userSalt + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", insertArtworks=" + insertArtworks +
+                ", r18=" + r18 +
+                ", r18g=" + r18g +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && userName.equals(user.userName) && userPassword.equals(user.userPassword) && userSalt.equals(user.userSalt) && createTime.equals(user.createTime) && updateTime.equals(user.updateTime);
+        return userId == user.userId && insertArtworks == user.insertArtworks && r18 == user.r18 && r18g == user.r18g && userName.equals(user.userName) && userPassword.equals(user.userPassword) && userSalt.equals(user.userSalt) && createTime.equals(user.createTime) && updateTime.equals(user.updateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, userPassword, userSalt, createTime, updateTime);
+        return Objects.hash(userId, userName, userPassword, userSalt, createTime, updateTime, insertArtworks, r18, r18g);
     }
 }

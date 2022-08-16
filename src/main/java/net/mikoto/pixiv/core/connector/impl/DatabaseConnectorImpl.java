@@ -43,7 +43,7 @@ public class DatabaseConnectorImpl extends StaticSource<DatabaseServer> implemen
      *
      * @param credential The credential you need to search.
      * @param order      The order of the artworks.
-     * @param properties The properties in Artwork.class
+     * @param properties The properties in Artwork.
      * @param pageCount  The page of the artworks.
      * @return The artwork objects list.
      */
