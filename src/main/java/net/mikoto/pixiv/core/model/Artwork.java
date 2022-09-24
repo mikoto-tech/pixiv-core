@@ -10,6 +10,40 @@ import java.util.Objects;
 /**
  * @author mikoto
  * Created at 21:30:24, 2021/9/19
+ *
+ * sql:
+ * create table pixiv.artwork
+ * (
+ *     pk_artwork_id          bigint unsigned not null
+ *         primary key,
+ *     artwork_title          varchar(32)     not null,
+ *     author_id              bigint unsigned not null,
+ *     author_name            varchar(15)     not null,
+ *     has_series             tinyint(1)      not null,
+ *     description            varchar(3000)   null,
+ *     illust_url_small       varchar(80)     not null,
+ *     illust_url_original    varchar(60)     not null,
+ *     illust_url_mini        varchar(70)     not null,
+ *     illust_url_thumb       varchar(80)     not null,
+ *     illust_url_regular     varchar(60)     not null,
+ *     page_count             int             not null,
+ *     bookmark_count         int             not null,
+ *     like_count             int             not null,
+ *     view_count             int             not null,
+ *     grading                tinyint(1)      not null,
+ *     tags                   varchar(350)    not null,
+ *     create_time            datetime        not null,
+ *     update_time            datetime        not null,
+ *     patch_time             datetime        not null,
+ *     series_id              bigint unsigned not null,
+ *     series_order           int             not null,
+ *     next_artwork_id        bigint unsigned null,
+ *     next_artwork_title     varchar(32)     null,
+ *     previous_artwork_id    bigint unsigned null,
+ *     previous_artwork_title varchar(32)     null,
+ *     constraint pk_artwork_id
+ *         unique (pk_artwork_id)
+ * );
  */
 @Entity
 @Table(name = "artwork")

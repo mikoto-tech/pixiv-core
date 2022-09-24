@@ -17,9 +17,12 @@ public interface DirectClient {
      * @return Result.
      */
     @Get(
-            url = "https://www.pixiv.net/ajax/illust/{artworkId}"
+            url = "https://www.pixiv.net/ajax/illust/{artworkId}",
+            headers = {
+                    "Cookie: {cookie}"
+            }
     )
-    String getArtwork(@Var("artworkId") int artworkId);
+    String getArtwork(@Var("artworkId") int artworkId, @Var("cookie") String cookie);
 
     /**
      * Get the image from pixiv.

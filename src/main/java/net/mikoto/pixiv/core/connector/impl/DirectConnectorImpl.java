@@ -58,7 +58,7 @@ public class DirectConnectorImpl implements DirectConnector {
 
         JSONObject artworkRawJson;
         try {
-            artworkRawJson = JSONObject.parseObject(directClient.getArtwork(artworkId));
+            artworkRawJson = JSONObject.parseObject(directClient.getArtwork(artworkId, ""));
         } catch (ForestNetworkException e) {
             if (e.getStatusCode() == 404) {
                 return null;
