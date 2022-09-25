@@ -3,10 +3,12 @@ package net.mikoto.pixiv.core.connector.impl;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.core.client.ForwardClient;
+import net.mikoto.pixiv.core.configuration.ForwardConfig;
 import net.mikoto.pixiv.core.connector.ForwardConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.server.ForwardServer;
 import net.mikoto.pixiv.core.source.SmoothWeightedSource;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,8 +28,12 @@ public class ForwardConnectorImpl extends SmoothWeightedSource<ForwardServer> im
     private final ForwardClient forwardClient;
 
     @Autowired
-    public ForwardConnectorImpl(ForwardClient forwardClient) {
+    public ForwardConnectorImpl(ForwardClient forwardClient, @NotNull ForwardConfig forwardConfig) {
         this.forwardClient = forwardClient;
+
+        for (ForwardServer forwardServer : forwardConfig.getForwardServers()) {
+            this.addServer(forwardServer);
+        }
     }
 
     /**
