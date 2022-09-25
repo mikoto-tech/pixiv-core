@@ -7,7 +7,7 @@ import java.util.Objects;
  * @date 2022/3/27 3:42
  */
 public class ForwardServer extends HttpServer implements CurrentWeighted {
-    private final int weight;
+    private int weight;
     private int currentWeight = 0;
     private String key;
 
@@ -62,5 +62,9 @@ public class ForwardServer extends HttpServer implements CurrentWeighted {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }
