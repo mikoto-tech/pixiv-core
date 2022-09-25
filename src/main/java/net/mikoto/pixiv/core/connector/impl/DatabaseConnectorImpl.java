@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.core.client.DatabaseClient;
+import net.mikoto.pixiv.core.configuration.DatabaseConfig;
 import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.Grade;
@@ -33,8 +34,9 @@ public class DatabaseConnectorImpl extends StaticSource<HttpServer> implements D
     private final DatabaseClient databaseClient;
 
     @Autowired
-    public DatabaseConnectorImpl(DatabaseClient databaseClient) {
+    public DatabaseConnectorImpl(DatabaseClient databaseClient, @NotNull DatabaseConfig databaseConfig) {
         this.databaseClient = databaseClient;
+        this.addServer(new HttpServer(databaseConfig.getAddress()));
     }
 
     /**
