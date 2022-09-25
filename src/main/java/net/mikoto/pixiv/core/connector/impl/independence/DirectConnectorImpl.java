@@ -1,4 +1,4 @@
-package net.mikoto.pixiv.core.connector.impl;
+package net.mikoto.pixiv.core.connector.impl.independence;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.dtflys.forest.exceptions.ForestNetworkException;
