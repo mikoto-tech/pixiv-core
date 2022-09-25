@@ -85,4 +85,9 @@ public interface DatabaseConnector extends ArtworkConnector, Source<HttpServer> 
     default Artwork getArtworkById(int artworkId) {
         return getArtwork(artworkId);
     }
+
+    @Override
+    default byte[] getImage(String imageUrl) {
+        return null;
+    }
 }
