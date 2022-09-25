@@ -5,6 +5,9 @@ import java.util.Objects;
 public class HttpServer implements Server {
     private String address;
 
+    public HttpServer() {
+    }
+
     public HttpServer(String address) {
         this.address = address;
     }

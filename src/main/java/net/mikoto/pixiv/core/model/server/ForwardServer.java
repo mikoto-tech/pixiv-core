@@ -18,6 +18,10 @@ public class ForwardServer extends HttpServer implements CurrentWeighted {
         this.key = key;
     }
 
+    public ForwardServer() {
+        super();
+    }
+
     @Override
     public String toString() {
         return "Mikoto-Pixiv-Generic-Data-Type[" + this.getClass().getPackage().getName() + this.getClass().getName() + "]:\nForwardServer{" +
