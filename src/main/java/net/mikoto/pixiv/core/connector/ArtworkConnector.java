@@ -15,4 +15,12 @@ public interface ArtworkConnector extends Connector {
      * @return An artwork object.
      */
     Artwork getArtworkById(int artworkId);
+
+    /**
+     * Get the image by image url.
+     *
+     * @param imageUrl The image url
+     * @return The image.
+     */
+    byte[] getImage(String imageUrl);
 }
