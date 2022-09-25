@@ -1,8 +1,11 @@
 package net.mikoto.pixiv.core.connector;
 
+import net.mikoto.pixiv.core.model.server.HttpServer;
+import net.mikoto.pixiv.core.source.Source;
+
 import java.util.List;
 
-public interface CentralConnector extends Connector {
+public interface CentralConnector extends Connector, Source<HttpServer> {
     /**
      * Check the token whether it have these scopes.
      *

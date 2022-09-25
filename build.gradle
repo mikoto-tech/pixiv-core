@@ -45,6 +45,7 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'com.dtflys.forest:forest-spring-boot-starter:1.5.26'
     compileOnly 'org.springframework.boot:spring-boot-starter-web'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
     // Others
     compileOnly 'com.alibaba.fastjson2:fastjson2:2.0.14'

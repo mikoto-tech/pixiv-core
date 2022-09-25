@@ -3,7 +3,7 @@ package net.mikoto.pixiv.core.connector;
 import com.alibaba.fastjson2.JSONArray;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.Grade;
-import net.mikoto.pixiv.core.model.server.DatabaseServer;
+import net.mikoto.pixiv.core.model.server.HttpServer;
 import net.mikoto.pixiv.core.source.Source;
 import org.springframework.data.domain.Sort;
 
@@ -14,7 +14,7 @@ import java.util.Set;
  * @author mikoto
  * @date 2022/7/2 17:42
  */
-public interface DatabaseConnector extends ArtworkConnector, Source<DatabaseServer> {
+public interface DatabaseConnector extends ArtworkConnector, Source<HttpServer> {
     /**
      * Get an artwork from database.
      * Each page can provide 12 artworks.

@@ -7,7 +7,7 @@ import net.mikoto.pixiv.core.client.DatabaseClient;
 import net.mikoto.pixiv.core.connector.DatabaseConnector;
 import net.mikoto.pixiv.core.model.Artwork;
 import net.mikoto.pixiv.core.model.Grade;
-import net.mikoto.pixiv.core.model.server.DatabaseServer;
+import net.mikoto.pixiv.core.model.server.HttpServer;
 import net.mikoto.pixiv.core.source.StaticSource;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/7/3 1:53
  */
 @Component("databaseConnector")
-public class DatabaseConnectorImpl extends StaticSource<DatabaseServer> implements DatabaseConnector {
+public class DatabaseConnectorImpl extends StaticSource<HttpServer> implements DatabaseConnector {
     /**
      * Constants
      */

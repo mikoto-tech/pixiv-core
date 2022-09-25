@@ -2,20 +2,28 @@ package net.mikoto.pixiv.core.connector.impl;
 
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.pixiv.core.client.CentralClient;
+import net.mikoto.pixiv.core.configuration.CentralConfig;
 import net.mikoto.pixiv.core.connector.CentralConnector;
 import net.mikoto.pixiv.core.model.server.HttpServer;
 import net.mikoto.pixiv.core.source.StaticSource;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component("centralConnector")
 public class CentralConnectorImpl extends StaticSource<HttpServer> implements CentralConnector {
     /**
      * Instances.
      */
     private final CentralClient centralClient;
 
-    public CentralConnectorImpl(CentralClient centralClient) {
+    @Autowired
+    public CentralConnectorImpl(CentralClient centralClient, @NotNull CentralConfig centralConfig) {
         this.centralClient = centralClient;
+
+        this.addServer(new HttpServer(centralConfig.getAddress()));
     }
 
     /**
