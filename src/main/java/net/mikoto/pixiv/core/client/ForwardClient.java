@@ -5,8 +5,6 @@ import com.dtflys.forest.annotation.Var;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-import static net.mikoto.pixiv.core.constant.HttpApi.*;
-
 /**
  * @author mikoto
  * @date 2022/7/3 1:56
@@ -22,7 +20,7 @@ public interface ForwardClient {
      * @return The artwork JSON string.
      */
     @Get(
-            url = "{address}" + FORWARD_ARTWORK + FORWARD_ARTWORK_GET_INFORMATION + "?key={key}&artworkId={artworkId}"
+            url = "{address}/artwork/getInformation?key={key}&artworkId={artworkId}"
     )
     String getArtwork(@NotNull @Var("address") String address, @Var("key") String key, @Var("artworkId") int artworkId);
 
@@ -35,7 +33,7 @@ public interface ForwardClient {
      * @return The image byte data.
      */
     @Get(
-            url = "{address}" + FORWARD_ARTWORK + FORWARD_ARTWORK_GET_IMAGE + "?key={key}&url={url}"
+            url = "{address}/artwork/getImage?key={key}&url={url}"
     )
     byte[] getImage(@NotNull @Var("address") String address, @Var("key") String key, @NotNull @Var("url") String url);
 }
