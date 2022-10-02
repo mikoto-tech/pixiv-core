@@ -50,7 +50,7 @@ public class DatabaseConnectorImpl extends StaticSource<HttpServer> implements D
      * @return The artwork objects list.
      */
     @Override
-    public Artwork[] getArtworks(String credential, Sort.Direction order, String properties, int pageCount, @NotNull Grade grade) {
+    public Artwork[] getArtworks(String credential, Sort.Direction order, String properties, int pageCount, Grade grade) {
         JSONObject artworksJson = JSON.parseObject(databaseClient.getArtworks(getServer().getAddress(), credential, order, properties, pageCount, grade.getGrading()));
 
         if (artworksJson.getBooleanValue(SUCCESS_KEY)) {

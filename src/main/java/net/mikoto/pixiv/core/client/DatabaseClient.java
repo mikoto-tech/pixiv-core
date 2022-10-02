@@ -3,6 +3,7 @@ package net.mikoto.pixiv.core.client;
 import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.JSONBody;
 import com.dtflys.forest.annotation.Post;
+import com.dtflys.forest.annotation.Var;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,7 @@ public interface DatabaseClient {
     @Post(
             "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_INSERT_ARTWORKS + "?token={token}"
     )
-    void insertArtworks(String address, String token, @JSONBody String artworks);
+    void insertArtworks(@Var("address") String address, @Var("token") String token, @JSONBody String artworks);
 
     /**
      * Get artwork from pixiv database.
@@ -36,7 +37,7 @@ public interface DatabaseClient {
     @Get(
             "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORK + "?artworkId={artworkId}"
     )
-    String getArtwork(String address, int artworkId);
+    String getArtwork(@Var("address") String address, @Var("artworkId") int artworkId);
 
     /**
      * Get artworks from pixiv database.
@@ -51,5 +52,5 @@ public interface DatabaseClient {
     @Post(
             "{address}" + DATABASE_ARTWORK + DATABASE_ARTWORK_GET_ARTWORKS + "?credential={credential}&order={order}&properties={properties}&pageCount={pageCount}&grading={grading}"
     )
-    String getArtworks(String address, String credential, Sort.Direction order, String properties, int pageCount, int grading);
+    String getArtworks(@Var("address") String address, @Var("credential") String credential, @Var("order") Sort.Direction order, @Var("properties") String properties, @Var("pageCount") int pageCount, @Var("grading") int grading);
 }
