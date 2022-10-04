@@ -4,7 +4,6 @@ import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.JSONBody;
 import com.dtflys.forest.annotation.Post;
 import com.dtflys.forest.annotation.Var;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 /**
@@ -41,14 +40,13 @@ public interface DatabaseClient {
      * Get artworks from pixiv database.
      *
      * @param address    The address.
-     * @param credential The credential you need to search.
-     * @param order      Order by. [DESC,ASC]
+     * @param tag        The tag need to search.
      * @param properties [The field in Artwork.class]
      * @param pageCount  The page.
      * @return The artworks.
      */
     @Post(
-            "{address}/artwork/getArtworks?credential={credential}&order={order}&properties={properties}&pageCount={pageCount}&grading={grading}"
+            "{address}/artwork/getArtworks?tag={tag}&properties={properties}&pageCount={pageCount}&grading={grading}&size=12"
     )
-    String getArtworks(@Var("address") String address, @Var("credential") String credential, @Var("order") Sort.Direction order, @Var("properties") String properties, @Var("pageCount") int pageCount, @Var("grading") int grading);
+    String getArtworks(@Var("address") String address, @Var("tag") String tag, @Var("properties") String properties, @Var("pageCount") int pageCount, @Var("grading") int grading);
 }
